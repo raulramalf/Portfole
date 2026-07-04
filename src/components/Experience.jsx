@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 const experience = [
   {
     role: "Desarrollador Backend",
@@ -56,35 +58,36 @@ const experience = [
 export default function Experience() {
   return (
     <section id="experiencia" className="px-6 md:px-16 py-24 bg-surface">
-      <p className="font-mono text-teal text-sm mb-4">$ git log --experiencia</p>
-      <h2 className="font-display font-semibold text-2xl md:text-3xl mb-10">
-        Experiencia
-      </h2>
+      <Reveal>
+        <p className="font-mono text-teal text-sm mb-4">$ git log --experiencia</p>
+        <h2 className="font-display font-semibold text-2xl md:text-3xl mb-10">
+          Experiencia
+        </h2>
+      </Reveal>
       <div className="flex flex-col gap-8 max-w-3xl">
         {experience.map((job, i) => (
-          <div
-            key={job.company}
-            className="relative pl-8 border-l border-white/10"
-          >
-            <span className="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-amber" />
-            <div className="flex flex-col md:flex-row md:items-baseline md:justify-between mb-1">
-              <h3 className="font-display font-semibold text-lg">
-                {job.role} · <span className="text-amber">{job.company}</span>
-              </h3>
-              <span className="font-mono text-xs text-muted whitespace-nowrap">
-                {job.period}
-              </span>
+          <Reveal key={job.company} delay={i * 100}>
+            <div className="relative pl-8 border-l border-white/10">
+              <span className="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-amber" />
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between mb-1">
+                <h3 className="font-display font-semibold text-lg">
+                  {job.role} · <span className="text-amber">{job.company}</span>
+                </h3>
+                <span className="font-mono text-xs text-muted whitespace-nowrap">
+                  {job.period}
+                </span>
+              </div>
+              <p className="font-mono text-xs text-teal mb-3">{job.location}</p>
+              <p className="text-muted text-sm leading-relaxed mb-3">
+                {job.description}
+              </p>
+              <ul className="list-disc list-inside text-sm text-muted space-y-1">
+                {job.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
             </div>
-            <p className="font-mono text-xs text-teal mb-3">{job.location}</p>
-            <p className="text-muted text-sm leading-relaxed mb-3">
-              {job.description}
-            </p>
-            <ul className="list-disc list-inside text-sm text-muted space-y-1">
-              {job.bullets.map((bullet) => (
-                <li key={bullet}>{bullet}</li>
-              ))}
-            </ul>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

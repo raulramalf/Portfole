@@ -1,12 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #05080E;
-  --color-surface: #0D1420;
-  --color-amber: #D9A356;
-  --color-teal: #45C7BA;
-  --color-text: #E9EDF5;
-  --color-muted: #8A93A6;
+  /* Tono 1 - Hero, Experiencia, Proyectos, Contacto */
+  --color-ink: #0B0F16;
+  --color-surface: #161C26;
+
+  /* Tono 2 - Sobre mi, Skills, Educacion (mas claro, sigue siendo oscuro) */
+  --color-slate: #1C2431;
+  --color-slate-surface: #262F3D;
+
+  --color-text: #E7E9ED;
+  --color-muted: #8B93A0;
+
+  /* Acentos */
+  --color-amber: #C9A227;
+  --color-teal: #3E8E7E;
+
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -41,4 +50,5 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .animate-blob-1, .animate-blob-2, .animate-blob-3 { animation: none; }
+  * { transition: none !important; }
 }
