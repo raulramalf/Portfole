@@ -12,29 +12,31 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": process.env.ANTHROPIC_API_KEY,
-        "anthropic-version": "2023-06-01",
+        "Authorization": `Bearer ${process.env.GROQ_API_KEY}`,
       },
       body: JSON.stringify({
-        model: "claude-haiku-4-5",
+        model: "llama-3.3-70b-versatile",
         max_tokens: 500,
-        system: PROFILE_CONTEXT,
-        messages: [...history, { role: "user", content: message }],
+        messages: [
+          { role: "system", content: PROFILE_CONTEXT },
+          ...history.map((h) => ({ role: h.role, content: h.content })),
+          { role: "user", content: message },
+        ],
       }),
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
-      const errText = await response.text();
-      console.error("Anthropic API error:", errText);
+      console.error("Groq API error:", data);
       return res.status(502).json({ error: "Error al contactar con el modelo" });
     }
 
-    const data = await response.json();
-    const text = data.content?.[0]?.text ?? "Lo siento, no he podido responder.";
+    const text = data.choices?.[0]?.message?.content ?? "Lo siento, no he podido responder.";
     res.status(200).json({ reply: text });
   } catch (err) {
     console.error(err);
