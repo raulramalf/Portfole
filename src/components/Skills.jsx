@@ -1,88 +1,72 @@
-import {
-  Server,
-  Layout,
-  Database,
-  Workflow,
-  Wrench,
-  Brain,
-} from "lucide-react";
 import Reveal from "./Reveal";
 
 const skills = [
   {
     category: "Backend",
-    icon: Server,
-    items: ["Java", "PHP", "Python", "Node.js"],
+    items: ["Java", "PHP", "Python", "Node.js", "Spring Boot", "FastAPI"],
   },
   {
     category: "Frontend",
-    icon: Layout,
-    items: ["JavaScript", "React", "Tailwind CSS"],
+    items: ["JavaScript (ES6+)", "React", "Tailwind CSS", "HTML5/CSS3"],
   },
   {
     category: "Bases de datos",
-    icon: Database,
-    items: ["MySQL", "PostgreSQL", "DynamoDB"],
+    items: ["PostgreSQL", "MySQL", "DynamoDB"],
   },
   {
-    category: "Automatizacion",
-    icon: Workflow,
+    category: "Automatización de Flujos",
     items: ["n8n", "Make"],
   },
   {
-    category: "IA y automatizacion inteligente",
-    icon: Brain,
-    items: ["OpenAI API", "LangChain", "Prompt engineering"],
+    category: "Inteligencia Artificial",
+    items: ["OpenAI API", "LangChain", "Prompt Engineering"],
   },
   {
-    category: "Herramientas y frameworks",
-    icon: Wrench,
-    items: ["Git", "GitHub", "Docker", "Symfony", "Laravel", "Odoo"],
+    category: "Herramientas & Ecosistemas",
+    items: ["Odoo (Python/XML)", "Docker", "Git / GitHub", "Symfony", "Laravel", "JavaFX"],
   },
 ];
 
 export default function Skills() {
   return (
-    <section id="skills" className="px-6 md:px-16 py-24 bg-slate">
-      <Reveal>
-        <p className="font-mono text-teal text-sm mb-4">$ ls habilidades/</p>
-        <h2 className="font-display font-semibold text-2xl md:text-3xl mb-2">
-          Stack tecnico
-        </h2>
-        <p className="text-muted text-sm mb-10 max-w-xl">
-          Herramientas y lenguajes con los que trabajo de forma habitual,
-          organizados por area.
-        </p>
-      </Reveal>
+    <section id="skills" className="px-6 md:px-16 py-24 bg-[#0B0D13] relative">
+      <div className="max-w-7xl mx-auto">
+        <Reveal>
+          <div className="inline-flex items-center gap-2 font-semibold text-garnet-light text-xs mb-3 px-3.5 py-1.5 rounded-full bg-garnet/10 border border-garnet/20 uppercase tracking-wider">
+            <span>Especialización Técnica</span>
+          </div>
+          <h2 className="font-display font-bold text-3xl md:text-4xl text-slate-50 mb-3">
+            Habilidades & Tecnologías
+          </h2>
+          <p className="text-muted text-sm mb-12 max-w-xl">
+            Herramientas y lenguajes con los que desarrollo habitualmente, organizados por área de especialidad.
+          </p>
+        </Reveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {skills.map((group, i) => {
-          const Icon = group.icon;
-          return (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skills.map((group, i) => (
             <Reveal key={group.category} delay={i * 80}>
-              <div className="group bg-slate-surface rounded-xl p-6 border border-white/5 hover:border-amber/40 hover:-translate-y-1 transition-all duration-300 h-full">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-9 h-9 rounded-lg bg-amber/10 flex items-center justify-center group-hover:bg-amber/20 transition-colors">
-                    <Icon size={18} className="text-amber" />
-                  </div>
-                  <h3 className="font-display font-semibold text-sm text-text">
+              <div className="group bg-slate-surface/80 rounded-xl p-6 border border-white/5 hover:border-garnet/40 hover:-translate-y-1 transition-all duration-300 h-full flex flex-col justify-between shadow-xl">
+                <div>
+                  <h3 className="font-display font-bold text-base text-slate-100 mb-4 pb-3 border-b border-white/5">
                     {group.category}
                   </h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <span
-                      key={item}
-                      className="text-xs font-mono text-muted bg-slate px-3 py-1.5 rounded-md border border-white/10"
-                    >
-                      {item}
-                    </span>
-                  ))}
+
+                  <div className="flex flex-wrap gap-2">
+                    {group.items.map((item) => (
+                      <span
+                        key={item}
+                        className="text-xs text-slate-300 bg-[#07080C] px-3 py-1.5 rounded-md border border-white/10 group-hover:border-garnet/25 transition-colors"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </Reveal>
-          );
-        })}
+          ))}
+        </div>
       </div>
     </section>
   );

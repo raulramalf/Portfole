@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#121520" />
+      <stop offset="50%" stop-color="#0E1017" />
+      <stop offset="100%" stop-color="#07080C" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C02638" />
+      <stop offset="100%" stop-color="#9E1B32" />
+    </linearGradient>
+    <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2A2F45" />
+      <stop offset="100%" stop-color="#161826" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" rx="24" fill="url(#bgGrad)" />
+  <rect width="398" height="398" x="1" y="1" rx="23" fill="none" stroke="#C02638" stroke-width="1.5" stroke-opacity="0.3" />
+
+  <!-- Abstract Tech Grid Lines -->
+  <path d="M 0 100 L 400 100 M 0 200 L 400 200 M 0 300 L 400 300 M 100 0 L 100 400 M 200 0 L 200 400 M 300 0 L 300 400" stroke="rgba(255,255,255,0.03)" stroke-width="1" />
+
+  <!-- Decorative Accent Glow Circles -->
+  <circle cx="200" cy="160" r="90" fill="none" stroke="url(#accentGrad)" stroke-width="1" stroke-dasharray="6,6" opacity="0.4" />
+  <circle cx="200" cy="160" r="110" fill="none" stroke="url(#accentGrad)" stroke-width="0.75" opacity="0.2" />
+
+  <!-- Silhouette Head -->
+  <circle cx="200" cy="140" r="48" fill="url(#avatarGrad)" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" />
+  
+  <!-- Silhouette Shoulders -->
+  <path d="M 100 310 C 100 230, 300 230, 300 310 Z" fill="url(#avatarGrad)" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" />
+
+  <!-- Code / Tech Overlay Graphic -->
+  <rect x="130" y="270" width="140" height="28" rx="6" fill="#07080C" stroke="#C02638" stroke-width="1" opacity="0.9" />
+  <text x="200" y="289" font-family="monospace" font-size="12" fill="#F8FAFC" text-anchor="middle" font-weight="bold">&lt;Raúl Ramírez /&gt;</text>
+</svg>

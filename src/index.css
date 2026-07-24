@@ -1,54 +1,79 @@
 @import "tailwindcss";
 
 @theme {
-  /* Tono 1 - Hero, Experiencia, Proyectos, Contacto */
-  --color-ink: #0B0F16;
-  --color-surface: #161C26;
+  /* Fondo principal ultra oscuro minimalista */
+  --color-ink: #07080C;
+  --color-surface: #0E1017;
+  --color-surface-hover: #141722;
 
-  /* Tono 2 - Sobre mi, Skills, Educacion (mas claro, sigue siendo oscuro) */
-  --color-slate: #1C2431;
-  --color-slate-surface: #262F3D;
+  /* Superficies secundarias */
+  --color-slate-bg: #0B0D13;
+  --color-slate-surface: #121520;
+  --color-slate-hover: #181C2B;
 
-  --color-text: #E7E9ED;
-  --color-muted: #8B93A0;
+  /* Textos */
+  --color-text: #F8FAFC;
+  --color-muted: #94A3B8;
+  --color-subtle: #64748B;
 
-  /* Acentos */
-  --color-amber: #C9A227;
-  --color-teal: #3E8E7E;
+  /* Acentos en Rojo Granate */
+  --color-garnet: #9E1B32;
+  --color-garnet-light: #C02638;
+  --color-garnet-dark: #6B0F20;
+  --color-garnet-glow: rgba(158, 27, 50, 0.25);
 
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
-body {
+html, body {
   background-color: var(--color-ink);
   color: var(--color-text);
   font-family: var(--font-body);
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
-@keyframes blob-1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(60px, 40px) scale(1.1); }
-  66% { transform: translate(-30px, 60px) scale(0.95); }
+
+::selection {
+  background-color: #9E1B32;
+  color: #ffffff;
 }
 
-@keyframes blob-2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(-50px, -30px) scale(1.08); }
-  66% { transform: translate(40px, -50px) scale(0.92); }
+/* Efectos de brillo granate */
+.garnet-glow {
+  box-shadow: 0 0 25px -5px rgba(158, 27, 50, 0.35);
 }
 
-@keyframes blob-3 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(30px, -40px) scale(1.12); }
+.garnet-border-glow {
+  box-shadow: 0 0 15px 0 rgba(158, 27, 50, 0.2);
 }
 
-.animate-blob-1 { animation: blob-1 22s ease-in-out infinite; }
-.animate-blob-2 { animation: blob-2 26s ease-in-out infinite; }
-.animate-blob-3 { animation: blob-3 30s ease-in-out infinite; }
+.garnet-gradient-text {
+  background: linear-gradient(135deg, #F8FAFC 30%, #C02638 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Cristal esmerilado minimalista */
+.glass-card {
+  background: rgba(14, 16, 23, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  background: rgba(20, 23, 34, 0.85);
+  border-color: rgba(192, 38, 56, 0.35);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(158, 27, 50, 0.15);
+  transform: translateY(-2px);
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-blob-1, .animate-blob-2, .animate-blob-3 { animation: none; }
-  * { transition: none !important; }
+  * { transition: none !important; animation: none !important; }
 }
