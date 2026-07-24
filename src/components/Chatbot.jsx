@@ -24,6 +24,21 @@ function getProfileReply(query) {
     return "¡Hasta luego! Que tengas un excelente día.";
   }
 
+  // 2. Respuesta cuando preguntan si es una IA
+  if (
+    q.includes("eres una ia") ||
+    q.includes("eres ia") ||
+    q.includes("inteligencia artificial") ||
+    q.includes("eres un bot") ||
+    q.includes("eres robot") ||
+    q.includes("eres gpt") ||
+    q.includes("es una ia") ||
+    q.includes("es ia")
+  ) {
+    return "No, no soy una inteligencia artificial. Soy únicamente un chat de autorespuesta diseñado para resolver dudas sobre el perfil profesional de Raúl Ramírez.";
+  }
+
+
   // 2. Preguntas temáticas sobre el perfil de Raúl
   if (q.includes("experiencia") || q.includes("trabajo") || q.includes("trayectoria") || q.includes("laboral") || q.includes("empresa")) {
     return "Raúl cuenta con experiencia como Desarrollador en Ingetexia Projects, Desarrollador Web Full-Stack en CodeArts Solutions, además de trayectoria previa en soporte técnico e informática.";

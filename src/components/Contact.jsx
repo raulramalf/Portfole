@@ -73,7 +73,9 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contacto" className="px-6 md:px-16 py-24 bg-[#07080C] relative">
+    <section id="contacto" className="px-6 md:px-16 py-24 bg-[#07080C]/90 backdrop-blur-md relative">
+
+
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           

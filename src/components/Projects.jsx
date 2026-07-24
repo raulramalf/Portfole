@@ -159,7 +159,9 @@ export default function Projects() {
       : projects.filter((p) => p.category === filter);
 
   return (
-    <section id="proyectos" className="px-6 md:px-16 py-24 bg-[#07080C] relative">
+    <section id="proyectos" className="px-6 md:px-16 py-24 bg-[#07080C]/90 backdrop-blur-md relative">
+
+
       <div className="max-w-7xl mx-auto">
         <Reveal>
           <div className="inline-flex items-center gap-2 font-semibold text-garnet-light text-xs mb-3 px-3.5 py-1.5 rounded-full bg-garnet/10 border border-garnet/20 uppercase tracking-wider">

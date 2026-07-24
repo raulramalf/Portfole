@@ -47,14 +47,20 @@ export default function Hero() {
 
           <Reveal delay={120}>
             <p className="text-slate-300 max-w-2xl lg:max-w-3xl text-base md:text-lg lg:text-xl leading-relaxed mb-4">
-              Desarrollador de software enfocado en la creación de aplicaciones robustas y en la{" "}
-              <strong className="text-slate-100 font-semibold">automatización inteligente de procesos con Inteligencia Artificial</strong>, 
-              respaldado por una amplia variedad de proyectos desarrollados con <strong className="text-slate-100 font-semibold">Java, Python, PHP, Node.js y React</strong>.
+              Diseño y desarrollo soluciones de software a medida, especializándome en{" "}
+              <strong className="text-slate-100 font-semibold">desarrollo backend/frontend y automatización inteligente de flujos de trabajo con IA</strong>.
             </p>
             <p className="text-muted max-w-2xl lg:max-w-3xl text-base md:text-lg lg:text-xl leading-relaxed mb-8">
-              Mi gran enfoque profesional actual es optimizar la eficiencia operativa mediante <strong className="text-slate-200 font-semibold">flujos avanzados en n8n y Make</strong>, e integración de <strong className="text-slate-200 font-semibold">modelos de Inteligencia Artificial</strong> adaptados a cada necesidad.
+              Trabajo habitualmente con <strong className="text-slate-200 font-semibold">Java, Python, PHP, Node.js y React</strong>, optimizando operativas mediante integraciones con <strong className="text-slate-200 font-semibold">n8n y Make</strong>.
             </p>
           </Reveal>
+
+
+
+
+
+
+
 
           <Reveal delay={240}>
             <div className="flex flex-wrap gap-4 items-center">
