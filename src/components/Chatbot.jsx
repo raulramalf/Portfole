@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { X, Send, Bot } from "lucide-react";
+import { X, Send } from "lucide-react";
 
 function getProfileReply(query) {
   const q = query.toLowerCase().trim();

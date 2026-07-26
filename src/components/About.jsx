@@ -22,7 +22,7 @@ export default function About() {
   ];
 
   return (
-    <section id="sobre-mi" className="px-6 md:px-16 py-24 bg-[#0B0D13]/90 backdrop-blur-md relative">
+    <section id="sobre-mi" className="px-6 md:px-16 py-24 bg-[#0B0D13] relative">
       <div className="max-w-7xl mx-auto">
         
         {/* Cabecera de Sección */}

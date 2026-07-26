@@ -1,5 +1,4 @@
 import Reveal from "./Reveal";
-import { Briefcase, Calendar, MapPin, CheckCircle2 } from "lucide-react";
 
 const experience = [
   {
@@ -58,7 +57,7 @@ const experience = [
 
 export default function Experience() {
   return (
-    <section id="experiencia" className="px-6 md:px-16 py-24 bg-[#07080C]/90 backdrop-blur-md relative">
+    <section id="experiencia" className="px-6 md:px-16 py-24 bg-[#07080C] relative">
 
 
       <div className="max-w-5xl mx-auto">

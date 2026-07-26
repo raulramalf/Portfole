@@ -1,5 +1,5 @@
 import Reveal from "./Reveal";
-import { Mail, Phone, MapPin, ArrowUpRight, MessageSquare } from "lucide-react";
+import { Mail, Phone, ArrowUpRight } from "lucide-react";
 
 function LinkedinIcon({ size = 20, className = "" }) {
   return (
@@ -73,7 +73,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contacto" className="px-6 md:px-16 py-24 bg-[#07080C]/90 backdrop-blur-md relative">
+    <section id="contacto" className="px-6 md:px-16 py-24 bg-[#07080C] relative">
 
 
       <div className="max-w-7xl mx-auto">

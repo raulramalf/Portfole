@@ -112,7 +112,8 @@ export default function Hero() {
               <div className="absolute -inset-1 bg-gradient-to-tr from-garnet-dark via-garnet/40 to-garnet-dark rounded-3xl blur-md opacity-25 group-hover:opacity-45 transition duration-500" />
               
               {/* Contenedor integrado con borde en tono granate */}
-              <div className="relative rounded-2xl overflow-hidden border border-garnet/40 shadow-[0_0_25px_rgba(158,27,50,0.2)] group bg-[#07080C]/60 backdrop-blur-sm">
+              <div className="relative rounded-2xl overflow-hidden border border-garnet/40 shadow-[0_0_25px_rgba(158,27,50,0.25)] group bg-[#07080C]/60 backdrop-blur-sm">
+
                 
                 {/* Badge de disponibilidad flotante */}
                 <div className="absolute top-3.5 left-3.5 z-10 flex items-center gap-2 bg-[#07080C]/85 border border-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-200 shadow-md">

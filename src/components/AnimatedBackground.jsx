@@ -24,7 +24,7 @@ export default function AnimatedBackground() {
 
     let particles = [];
     const getParticleCount = () => {
-      return width < 768 ? 22 : Math.min(Math.floor((width * height) / 16000), 55);
+      return width < 768 ? 16 : Math.min(Math.floor((width * height) / 22000), 38);
     };
 
     class Particle {
@@ -56,7 +56,7 @@ export default function AnimatedBackground() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fillStyle = this.isGarnet
-          ? `rgba(225, 45, 68, ${Math.max(0.2, currentAlpha)})`
+          ? `rgba(192, 38, 56, ${Math.max(0.25, currentAlpha)})`
           : `rgba(203, 213, 225, ${Math.max(0.2, currentAlpha)})`;
         ctx.fill();
       }
@@ -73,17 +73,20 @@ export default function AnimatedBackground() {
     initParticles();
 
     let time = 0;
+    let isRunning = true;
 
     const render = () => {
+      if (!isRunning) return;
+
       time += 0.005;
       ctx.clearRect(0, 0, width, height);
 
-      // Resplandor ambiental de esquina suave que orbita lentamente sin seguir al ratón
+      // Resplandor ambiental de esquina suave
       const orb1X = width * 0.2 + Math.sin(time) * 60;
       const orb1Y = height * 0.25 + Math.cos(time * 0.7) * 50;
       const r1 = Math.max(1, width * 0.45);
       const bgGrad1 = ctx.createRadialGradient(orb1X, orb1Y, 0, orb1X, orb1Y, r1);
-      bgGrad1.addColorStop(0, "rgba(192, 38, 56, 0.09)");
+      bgGrad1.addColorStop(0, "rgba(158, 27, 50, 0.12)");
       bgGrad1.addColorStop(1, "transparent");
       ctx.fillStyle = bgGrad1;
       ctx.fillRect(0, 0, width, height);
@@ -92,13 +95,15 @@ export default function AnimatedBackground() {
       const orb2Y = height * 0.75 + Math.sin(time * 0.6) * 60;
       const r2 = Math.max(1, width * 0.4);
       const bgGrad2 = ctx.createRadialGradient(orb2X, orb2Y, 0, orb2X, orb2Y, r2);
-      bgGrad2.addColorStop(0, "rgba(225, 45, 68, 0.07)");
+      bgGrad2.addColorStop(0, "rgba(192, 38, 56, 0.09)");
       bgGrad2.addColorStop(1, "transparent");
       ctx.fillStyle = bgGrad2;
       ctx.fillRect(0, 0, width, height);
 
-      // Dibujar partículas y conexiones de red
-      const maxDist = width < 768 ? 100 : 145;
+      // Dibujar partículas y conexiones con cálculo distSq sin Math.sqrt innecesario
+      const maxDist = width < 768 ? 90 : 130;
+      const maxDistSq = maxDist * maxDist;
+
       for (let i = 0; i < particles.length; i++) {
         particles[i].update();
         particles[i].draw();
@@ -106,9 +111,10 @@ export default function AnimatedBackground() {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+          const distSq = dx * dx + dy * dy;
 
-          if (dist < maxDist) {
+          if (distSq < maxDistSq) {
+            const dist = Math.sqrt(distSq);
             const alpha = (1 - dist / maxDist) * 0.28;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
@@ -123,10 +129,22 @@ export default function AnimatedBackground() {
       animationFrameId = requestAnimationFrame(render);
     };
 
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        isRunning = false;
+        cancelAnimationFrame(animationFrameId);
+      } else if (!isRunning) {
+        isRunning = true;
+        animationFrameId = requestAnimationFrame(render);
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
     render();
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -144,4 +162,5 @@ export default function AnimatedBackground() {
       />
     </div>
   );
+
 }
