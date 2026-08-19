@@ -60,48 +60,11 @@ Spring Boot, JavaFX, FastAPI, React Native, Electron, n8n, Make, LangChain, Open
 - LinkedIn: https://www.linkedin.com/in/raul-ramírezalfaro-539433275
 - Ubicación: Sevilla y alrededores, España
 
-## Proyectos
+## Proyectos Destacados
 
-### Full-Stack
-- Ledgerly: plataforma de facturación para autónomos y pymes (creación de facturas,
-  clientes, impuestos y exportación a PDF). Stack: React, Node.js, PostgreSQL.
-- Driftboard: gestor de tareas estilo Kanban con arrastrar y soltar, notificaciones
-  en tiempo real y dashboard de estadísticas. Stack: React, Laravel, MySQL.
-- WheelFireClub: aplicación web gamificada inspirada en Stranger Things, desarrollada
-  bajo arquitectura MVC. Stack: Laravel, MySQL, PHP.
-- Momentum: aplicación de seguimiento de hábitos con gráficas de progreso, recordatorios
-  y modo offline. Stack: React, Node.js, DynamoDB.
-- Slotwise: sistema de reservas para negocios de servicios (peluquerías, clínicas) con
-  calendario en tiempo real y recordatorios por email. Stack: React, Node.js, MySQL.
+- **AI Support Chatbot (Chatbots)**: Un chatbot de soporte al cliente avanzado e intuitivo, con diseño moderno glassmorphism y lógica de simulación de respuestas en tiempo real. Tecnologías: React, AI Integration, Tailwind CSS.
+- **E-commerce Storefront (E-commerce)**: Plataforma de comercio electrónico moderna y dinámica con animaciones fluidas, visor de catálogo interactivo y carrito de compras integrado. Tecnologías: React, Framer Motion, Context API.
+- **CRM Dashboard (Sistemas de Gestión)**: Aplicación CRM enfocada en la experiencia de usuario, con visualización de embudo de ventas, lista de clientes y métricas de rendimiento. Tecnologías: React, Tailwind CSS, Data Visualization.
 
-### Backend · Escritorio
-- Warehaus: sistema de gestión de inventario multialmacén para escritorio, con control
-  de stock en tiempo real y alertas de reposición. Stack: Java, Spring Boot, PostgreSQL, JavaFX.
-- Payrix: motor de cálculo de nóminas para pymes con generación de recibos, integración
-  con Seguridad Social y app de escritorio para RRHH. Stack: Java, Spring Boot, PostgreSQL, Electron.
-
-### Backend · Móvil
-- Fieldpin: app móvil para técnicos de campo: gestión de órdenes de trabajo, firma digital
-  y sincronización offline con el backend. Stack: Python, FastAPI, PostgreSQL, React Native.
-
-### Automatización IA
-- Triagely: flujo que clasifica y prioriza tickets de soporte automáticamente usando un
-  LLM, integrado con el helpdesk de la empresa. Stack: n8n, OpenAI API, Python.
-- Digestive: automatización que resume documentos largos (contratos, informes) subidos
-  a una carpeta y envía el resumen por email. Stack: Make, LangChain, Python.
-
-### Chatbot · Ventas
-- Pitchline: chatbot para equipos comerciales que cualifica leads, agenda reuniones y
-  responde dudas de producto en tiempo real. Stack: Node.js, OpenAI API, WhatsApp API.
-
-### Chatbot · Salud
-- Vitalis: asistente virtual para clínicas privadas: gestión de citas, recordatorios y
-  respuestas a preguntas frecuentes de pacientes. Stack: Python, FastAPI, OpenAI API.
-
-### Chatbot · Finanzas
-- Ledgerbot: chatbot para banca y fintech centrado en consultas de saldo, movimientos y
-  productos, con salvaguardas de seguridad y cumplimiento. Stack: Python, LangChain, PostgreSQL.
-
-Nota: los repositorios de GitHub de estos proyectos aún no tienen enlace público asignado
-en el portfolio actual.
+Si te preguntan por más proyectos, aclara que actualmente estás enfocando tu portfolio en estas 3 aplicaciones principales de alto impacto.
 `;

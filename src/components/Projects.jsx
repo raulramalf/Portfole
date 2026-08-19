@@ -21,133 +21,43 @@ function GithubIcon({ size = 14, className = "" }) {
   );
 }
 
+import { Link } from "react-router-dom";
+
 const projects = [
   {
-    name: "Ledgerly",
-    category: "Full-Stack",
-    description:
-      "Plataforma de facturación para autónomos y pymes: gestión de facturas, clientes, cálculo de impuestos y exportación automatizada a PDF.",
-    stack: ["React", "Node.js", "PostgreSQL"],
-    github: "https://github.com/raulramalf",
-    demo: "",
-  },
-  {
-    name: "Driftboard",
-    category: "Full-Stack",
-    description:
-      "Gestor de tareas interactivo estilo Kanban con soporte drag-and-drop, notificaciones en tiempo real y dashboard de métricas.",
-    stack: ["React", "Laravel", "MySQL"],
-    github: "https://github.com/raulramalf",
-    demo: "",
-  },
-  {
-    name: "WheelFireClub",
-    category: "Full-Stack",
-    description:
-      "Aplicación web gamificada inspirada en Stranger Things, desarrollada bajo patrón de diseño MVC y optimización de consultas SQL.",
-    stack: ["Laravel", "MySQL", "PHP"],
-    github: "https://github.com/raulramalf",
-    demo: "",
-  },
-  {
-    name: "Momentum",
-    category: "Full-Stack",
-    description:
-      "Aplicación de seguimiento de hábitos personales con métricas en gráficas de progreso, recordatorios y arquitectura offline-first.",
-    stack: ["React", "Node.js", "DynamoDB"],
-    github: "https://github.com/raulramalf",
-    demo: "",
-  },
-  {
-    name: "Slotwise",
-    category: "Full-Stack",
-    description:
-      "Sistema de reservas en línea para negocios de servicios (peluquerías, clínicas) con agenda en tiempo real y recordatorios por email.",
-    stack: ["React", "Node.js", "MySQL"],
-    github: "https://github.com/raulramalf",
-    demo: "",
-  },
-  {
-    name: "Warehaus",
-    category: "Backend · Escritorio",
-    description:
-      "Sistema de gestión de inventario multialmacén para escritorio, con control de stock en tiempo real y alertas automatizadas de reposición.",
-    stack: ["Java", "Spring Boot", "PostgreSQL", "JavaFX"],
-    github: "https://github.com/raulramalf",
-    demo: "",
-  },
-  {
-    name: "Fieldpin",
-    category: "Backend · Móvil",
-    description:
-      "App móvil para técnicos de campo: gestión de órdenes de trabajo, captura de firma digital y sincronización bidireccional offline.",
-    stack: ["Python", "FastAPI", "PostgreSQL", "React Native"],
-    github: "https://github.com/raulramalf",
-    demo: "",
-  },
-  {
-    name: "Payrix",
-    category: "Backend · Escritorio",
-    description:
-      "Motor de cálculo de nóminas para pymes con generación de recibos, módulo para RRHH e integración estructurada de datos.",
-    stack: ["Java", "Spring Boot", "PostgreSQL", "Electron"],
-    github: "https://github.com/raulramalf",
-    demo: "",
-  },
-  {
-    name: "Triagely",
-    category: "Automatización IA",
-    description:
-      "Flujo inteligente que clasifica y prioriza tickets de soporte automáticamente mediante modelos LLM integrados con el helpdesk.",
-    stack: ["n8n", "OpenAI API", "Python"],
-    github: "https://github.com/raulramalf",
-    demo: "",
-  },
-  {
-    name: "Digestive",
-    category: "Automatización IA",
-    description:
-      "Flujo automatizado que analiza y resume documentos extensos (contratos, informes) subidos a almacenamiento y notifica resúmenes por email.",
-    stack: ["Make", "LangChain", "Python"],
-    github: "https://github.com/raulramalf",
-    demo: "",
-  },
-  {
-    name: "Pitchline",
+    name: "AI Support Chatbot",
     category: "Chatbots",
     description:
-      "Chatbot para equipos comerciales que cualifica leads, agenda reuniones automáticamente y responde preguntas de producto.",
-    stack: ["Node.js", "OpenAI API", "WhatsApp API"],
+      "Un chatbot de soporte al cliente avanzado e intuitivo, con un diseño moderno glassmorphism y lógica de simulación de respuestas en tiempo real.",
+    stack: ["React", "AI Integration", "Tailwind CSS"],
     github: "https://github.com/raulramalf",
-    demo: "",
+    demo: "/demo/chatbot",
   },
   {
-    name: "Vitalis",
-    category: "Chatbots",
+    name: "E-commerce Storefront",
+    category: "E-commerce",
     description:
-      "Asistente virtual para clínicas privadas: reserva de citas, recordatorios automáticos y resolución de dudas comunes de pacientes.",
-    stack: ["Python", "FastAPI", "OpenAI API"],
+      "Plataforma de comercio electrónico moderna y dinámica con animaciones fluidas, visor de catálogo interactivo y carrito de compras integrado.",
+    stack: ["React", "Framer Motion", "Context API"],
     github: "https://github.com/raulramalf",
-    demo: "",
+    demo: "/demo/ecommerce",
   },
   {
-    name: "Ledgerbot",
-    category: "Chatbots",
+    name: "CRM Dashboard",
+    category: "Sistemas de Gestión",
     description:
-      "Chatbot para sector fintech/banca especializado en consultas de saldo, movimientos e información de productos con salvaguardas de seguridad.",
-    stack: ["Python", "LangChain", "PostgreSQL"],
+      "Aplicación CRM enfocada en la experiencia de usuario, con visualización de embudo de ventas, lista de clientes y métricas de rendimiento.",
+    stack: ["React", "Tailwind CSS", "Data Visualization"],
     github: "https://github.com/raulramalf",
-    demo: "",
+    demo: "/demo/crm",
   },
 ];
 
 const categories = [
   "Todos",
-  "Full-Stack",
-  "Backend · Escritorio",
-  "Backend · Móvil",
-  "Automatización IA",
   "Chatbots",
+  "E-commerce",
+  "Sistemas de Gestión",
 ];
 
 export default function Projects() {
@@ -244,15 +154,25 @@ export default function Projects() {
                     </a>
                   )}
                   {project.demo && (
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-garnet-light hover:underline flex items-center gap-1.5 ml-auto"
-                    >
-                      <span>Demo</span>
-                      <ExternalLink size={14} />
-                    </a>
+                    project.demo.startsWith('/') ? (
+                      <Link
+                        to={project.demo}
+                        className="text-garnet-light hover:underline flex items-center gap-1.5 ml-auto"
+                      >
+                        <span>Demo</span>
+                        <ExternalLink size={14} />
+                      </Link>
+                    ) : (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-garnet-light hover:underline flex items-center gap-1.5 ml-auto"
+                      >
+                        <span>Demo</span>
+                        <ExternalLink size={14} />
+                      </a>
+                    )
                   )}
                 </div>
 
