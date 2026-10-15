@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import SectionTitle from "./SectionTitle";
 
 const experience = [
   {
@@ -57,58 +58,31 @@ const experience = [
 
 export default function Experience() {
   return (
-    <section id="experiencia" className="px-6 md:px-16 py-24 bg-black relative">
+    <section id="experiencia" className="px-6 py-20">
+      <div className="max-w-[1280px] mx-auto">
+        <SectionTitle label="Trayectoria" title="Experiencia profesional">
+          Desarrollo backend, personalización ERP, desarrollo web full-stack y soporte técnico.
+        </SectionTitle>
 
-
-      <div className="max-w-5xl mx-auto">
-        <Reveal>
-          <div className="inline-flex items-center gap-2 font-semibold text-garnet-light text-xs mb-3 px-3.5 py-1.5 rounded-full bg-garnet/10 border border-garnet/20 uppercase tracking-wider">
-            <span>Trayectoria Laboral</span>
-          </div>
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-slate-50 mb-3">
-            Experiencia Profesional
-          </h2>
-          <p className="text-muted text-sm mb-12 max-w-xl">
-            Trayectoria en desarrollo backend, personalización ERP, desarrollo web full-stack y soporte técnico.
-          </p>
-        </Reveal>
-
-        <div className="relative border-l-2 border-white/10 ml-4 md:ml-6 space-y-12">
+        <div className="grid gap-4">
           {experience.map((job, i) => (
-            <Reveal key={job.company} delay={i * 100}>
-              <div className="relative pl-8 md:pl-10 group">
-                {/* Nodo de línea de tiempo granate */}
-                <span className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-black border-2 border-garnet group-hover:bg-garnet-light group-hover:border-garnet-light transition-colors shadow-md shadow-garnet/40" />
-
-                {/* Tarjeta de la experiencia */}
-                <div className="p-6 rounded-xl bg-slate-surface/70 border border-white/5 group-hover:border-garnet/30 transition-all duration-300 shadow-xl">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
-                    <div>
-                      <h3 className="font-display font-bold text-lg text-slate-100 flex items-center gap-2">
-                        <span>{job.role}</span>
-                        <span className="text-garnet-light text-sm font-normal">@ {job.company}</span>
-                      </h3>
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-3 text-xs text-muted">
-                      <span className="px-2.5 py-1 rounded bg-ink/70 border border-white/10">
-                        {job.period}
-                      </span>
-                      <span className="px-2.5 py-1 rounded bg-ink/70 border border-white/10">
-                        {job.location}
-                      </span>
-                    </div>
+            <Reveal key={job.company} delay={i * 60}>
+              <div className="border border-fog rounded-3xl p-6 md:p-8 bg-white grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
+                <div className="md:col-span-4">
+                  <h3 className="text-xl fw-652 tracking-tight">{job.role}</h3>
+                  <p className="text-graphite fw-440 mt-1">{job.company}</p>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    <span className="pill bg-mist text-xs fw-440 px-3 py-1">{job.period}</span>
+                    <span className="pill bg-mist text-xs fw-440 px-3 py-1">{job.location}</span>
                   </div>
-
-                  <p className="text-slate-300 text-sm mb-4 leading-relaxed">
-                    {job.description}
-                  </p>
-
+                </div>
+                <div className="md:col-span-8">
+                  <p className="text-base fw-456 leading-relaxed mb-4">{job.description}</p>
                   <ul className="space-y-2">
-                    {job.bullets.map((bullet) => (
-                      <li key={bullet} className="flex items-start gap-2.5 text-xs text-muted leading-relaxed">
-                        <span className="w-1.5 h-1.5 rounded-full bg-garnet-light mt-1.5 shrink-0" />
-                        <span>{bullet}</span>
+                    {job.bullets.map((b) => (
+                      <li key={b} className="flex gap-3 text-sm text-graphite fw-440 leading-relaxed">
+                        <span className="w-1.5 h-1.5 rounded-full bg-ink mt-2 shrink-0" />
+                        <span>{b}</span>
                       </li>
                     ))}
                   </ul>

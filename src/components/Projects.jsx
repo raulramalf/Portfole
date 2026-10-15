@@ -2,59 +2,57 @@ import { ExternalLink } from "lucide-react";
 import Reveal from "./Reveal";
 import SectionTitle from "./SectionTitle";
 import GithubIcon from "./GithubIcon";
+import MediaGallery from "./MediaGallery";
 import { projects } from "../data/projects";
-
-function ProjectLink({ href, children, className }) {
-  return <a href={href} target="_blank" rel="noreferrer" className={className}>{children}</a>;
-}
 
 export default function Projects() {
   return (
-    <section id="proyectos" className="px-6 py-24 relative">
-      <div className="max-w-6xl mx-auto">
-        <SectionTitle cmd="ls ./proyectos" title="Proyectos">
-          Mi proyecto personal, con un fragmento real de su código.
+    <section id="proyectos" className="px-6 py-20 bg-mist">
+      <div className="max-w-[1280px] mx-auto">
+        <SectionTitle label="Proyectos" title="Proyecto personal">
+          Lo que construyo fuera del trabajo, con su código abierto.
         </SectionTitle>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {projects.map((p, i) => (
-            <div key={p.name} className={p.featured ? "lg:col-span-2" : ""}>
-              <Reveal delay={(i % 2) * 80} className="h-full">
-                <article className={`h-full flex flex-col rounded-lg border bg-slate-surface/80 overflow-hidden transition hover:-translate-y-1 hover:shadow-[0_0_30px_-8px_rgba(57,255,20,0.4)] ${p.featured ? "border-neon/50" : "border-neon/15 hover:border-neon/50"}`}>
-                  <div className={`grid grid-cols-1 ${p.featured ? "lg:grid-cols-2" : ""} flex-1`}>
-                    <div className="p-6 flex flex-col">
-                      <span className="text-[11px] text-neon mb-3">[{p.tag}]</span>
-                      <h3 className="font-bold text-xl text-slate-50 mb-2">{p.name}</h3>
-                      <p className="text-muted text-xs leading-relaxed mb-5 flex-1">{p.description}</p>
-                      <div className="flex flex-wrap gap-1.5 mb-5">
-                        {p.stack.map((t) => (
-                          <span key={t} className="text-[11px] text-neon/90 border border-neon/25 px-2 py-0.5 rounded">{t}</span>
-                        ))}
-                      </div>
-                      <div className="flex items-center gap-5 text-xs pt-4 border-t border-neon/10">
-                        <ProjectLink href={p.href} className="text-neon hover:underline flex items-center gap-1.5">
-                          {p.hrefLabel} <ExternalLink size={13} />
-                        </ProjectLink>
-                        {p.github && (
-                          <a href={p.github} target="_blank" rel="noreferrer" className="text-muted hover:text-neon flex items-center gap-1.5">
-                            <GithubIcon size={13} /> Código
-                          </a>
-                        )}
-                      </div>
-                    </div>
+        <div className="flex flex-col gap-6">
+          {projects.map((p) => (
+            <Reveal key={p.name}>
+              <article className="bg-white border border-fog rounded-3xl p-5 md:p-6 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
+                <div className="flex flex-col justify-center py-2 lg:pl-4">
+                  <span className="pill bg-ink text-white text-xs fw-600 px-3 py-0.5 w-fit mb-4">{p.tag}</span>
+                  <h3 className="text-3xl fw-652 tracking-tight mb-3">{p.name}</h3>
+                  <p className="text-graphite text-base fw-440 leading-relaxed mb-6">{p.description}</p>
 
-                    <div className="bg-black border-t lg:border-t-0 lg:border-l border-neon/15 min-w-0">
-                      <div className="flex items-center gap-2 px-4 py-2 border-b border-neon/10 text-[11px] text-subtle">
-                        <span className="w-2 h-2 rounded-full bg-neon/70" />
-                        <span className="truncate">{p.file}</span>
-                        <span className="ml-auto uppercase">{p.lang}</span>
-                      </div>
-                      <pre className="p-4 text-[11px] leading-relaxed text-neon/85 overflow-x-auto"><code>{p.code}</code></pre>
-                    </div>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {p.stack.map((t) => (
+                      <span key={t} className="pill border border-fog text-xs fw-440 px-3 py-1">{t}</span>
+                    ))}
                   </div>
-                </article>
-              </Reveal>
-            </div>
+
+                  <div className="flex flex-wrap gap-3">
+                    <a href={p.href} target="_blank" rel="noreferrer" className="btn btn-fill">
+                      {p.hrefLabel} <ExternalLink size={14} />
+                    </a>
+                    {p.github && (
+                      <a href={p.github} target="_blank" rel="noreferrer" className="btn btn-line">
+                        <GithubIcon size={14} /> Código
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                {p.media?.length ? (
+                  <MediaGallery media={p.media} name={p.name} />
+                ) : (
+                  <div className="rounded-2xl border border-fog bg-mist overflow-hidden min-w-0">
+                    <div className="flex items-center gap-2 px-4 py-2.5 border-b border-fog text-xs text-graphite">
+                      <span className="truncate font-mono">{p.file}</span>
+                      <span className="ml-auto uppercase">{p.lang}</span>
+                    </div>
+                    <pre className="p-4 text-xs leading-relaxed text-ink overflow-x-auto font-mono"><code>{p.code}</code></pre>
+                  </div>
+                )}
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>

@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import SectionTitle from "./SectionTitle";
 
 const education = [
   {
@@ -26,53 +27,19 @@ const education = [
 
 export default function Education() {
   return (
-    <section id="educacion" className="px-6 md:px-16 py-24 bg-transparent relative">
+    <section id="educacion" className="px-6 py-20">
+      <div className="max-w-[1280px] mx-auto">
+        <SectionTitle label="Formación" title="Estudios y titulaciones" />
 
-
-      <div className="max-w-7xl mx-auto">
-        <Reveal>
-          <div className="inline-flex items-center gap-2 font-semibold text-garnet-light text-xs mb-3 px-3.5 py-1.5 rounded-full bg-garnet/10 border border-garnet/20 uppercase tracking-wider">
-            <span>Formación Académica</span>
-          </div>
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-slate-50 mb-3">
-            Estudios & Titulaciones
-          </h2>
-          <p className="text-muted text-sm mb-12 max-w-xl">
-            Estudios y especializaciones técnicas cursadas en desarrollo de software y sistemas informáticos.
-          </p>
-        </Reveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {education.map((edu, i) => (
-            <Reveal key={edu.title} delay={i * 100}>
-              <div className="bg-slate-surface/80 rounded-xl p-6 border border-white/5 hover:border-garnet/40 transition-all duration-300 h-full flex flex-col justify-between shadow-xl group">
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs text-muted px-2.5 py-1 rounded bg-ink/70 border border-white/10">
-                      {edu.period}
-                    </span>
-                  </div>
-
-                  <h3 className="font-display font-bold text-lg text-slate-100 mb-1">
-                    {edu.title}
-                  </h3>
-
-                  {edu.subtitle && (
-                    <p className="text-xs text-garnet-light font-medium mb-3">
-                      {edu.subtitle}
-                    </p>
-                  )}
-
-                  <div className="text-xs text-slate-400 mb-4 font-semibold">
-                    <span>{edu.institution}</span>
-                  </div>
-
-                  {edu.note && (
-                    <p className="text-muted text-xs leading-relaxed border-t border-white/5 pt-3">
-                      {edu.note}
-                    </p>
-                  )}
-                </div>
+            <Reveal key={edu.title} delay={i * 80} className="h-full">
+              <div className="h-full border border-fog rounded-2xl p-6 bg-white flex flex-col">
+                <span className="pill bg-mist text-xs fw-440 px-3 py-1 w-fit mb-4">{edu.period}</span>
+                <h3 className="text-lg fw-652 tracking-tight leading-snug">{edu.title}</h3>
+                <p className="text-sm fw-456 mt-1">{edu.subtitle}</p>
+                <p className="text-sm text-graphite fw-440 mt-1 mb-4">{edu.institution}</p>
+                <p className="text-sm text-graphite fw-440 leading-relaxed border-t border-fog pt-4 mt-auto">{edu.note}</p>
               </div>
             </Reveal>
           ))}

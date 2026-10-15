@@ -32,8 +32,7 @@ function Home() {
 
 function App() {
   return (
-    <div className="font-body relative bg-black min-h-screen text-slate-100 selection:bg-neon selection:text-black">
-      <div className="grid-bg fixed inset-0 z-0 pointer-events-none" />
+    <div className="font-body relative bg-white min-h-screen text-ink">
       <div className="relative z-10 h-full min-h-screen flex flex-col">
         <Routes>
           <Route path="/" element={<Home />} />

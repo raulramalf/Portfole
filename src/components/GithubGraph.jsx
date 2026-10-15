@@ -9,16 +9,16 @@ export default function GithubGraph() {
   const [failed, setFailed] = useState(false);
 
   return (
-    <section id="github" className="px-6 py-24 relative">
-      <div className="max-w-6xl mx-auto">
-        <SectionTitle cmd="git log --contributions" title="Actividad en GitHub" />
+    <section id="github" className="px-6 py-20 bg-mist">
+      <div className="max-w-[1280px] mx-auto">
+        <SectionTitle label="GitHub" title="Actividad de contribuciones" />
         <Reveal>
-          <div className="rounded-lg border border-neon/20 bg-slate-surface/80 p-5 overflow-x-auto">
+          <div className="rounded-3xl border border-fog bg-white p-6 overflow-x-auto">
             {failed ? (
-              <p className="text-muted text-sm">No se pudo cargar el gráfico. Míralo directamente en GitHub.</p>
+              <p className="text-graphite text-sm">No se pudo cargar el gráfico. Míralo directamente en GitHub.</p>
             ) : (
               <img
-                src={`https://ghchart.rshah.org/39ff14/${USER}`}
+                src={`https://ghchart.rshah.org/141414/${USER}`}
                 alt={`Gráfico de contribuciones de GitHub de ${USER}`}
                 loading="lazy"
                 onError={() => setFailed(true)}
@@ -26,8 +26,7 @@ export default function GithubGraph() {
               />
             )}
           </div>
-          <a href={`https://github.com/${USER}`} target="_blank" rel="noreferrer"
-             className="mt-4 inline-flex items-center gap-2 text-xs text-neon hover:underline">
+          <a href={`https://github.com/${USER}`} target="_blank" rel="noreferrer" className="btn btn-line mt-5">
             <GithubIcon size={14} /> github.com/{USER}
           </a>
         </Reveal>

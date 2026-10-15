@@ -5,26 +5,25 @@ import { posts } from "../data/projects";
 
 export default function Blog() {
   return (
-    <section id="blog" className="px-6 py-24 relative">
-      <div className="max-w-6xl mx-auto">
-        <SectionTitle cmd="ls ./blog" title="Blog">
-          Notas técnicas sobre decisiones de diseño de mis proyectos.
+    <section id="blog" className="px-6 py-20">
+      <div className="max-w-[1280px] mx-auto">
+        <SectionTitle label="Blog" title="Notas técnicas">
+          Decisiones de diseño de mis proyectos.
         </SectionTitle>
-        <ul className="divide-y divide-neon/15 border-y border-neon/15">
+        <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {posts.map((p, i) => (
             <li key={p.href}>
-              <Reveal delay={i * 80}>
+              <Reveal delay={i * 80} className="h-full">
                 <a href={p.href} target="_blank" rel="noreferrer"
-                   className="group flex items-start gap-4 py-5 px-2 hover:bg-neon/5 transition">
-                  <span className="text-subtle text-xs pt-1">{String(i + 1).padStart(2, "0")}</span>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-slate-100 group-hover:text-neon font-semibold transition">{p.title}</h3>
-                    <p className="text-muted text-xs mt-1">{p.summary}</p>
-                    <div className="flex gap-2 mt-2">
-                      {p.tags.map((t) => <span key={t} className="text-[11px] text-neon/80">#{t}</span>)}
-                    </div>
+                   className="group h-full flex flex-col rounded-2xl border border-fog bg-white p-6 hover:border-ink transition-colors">
+                  <div className="flex items-start justify-between gap-4 mb-3">
+                    <h3 className="text-lg fw-600 leading-snug">{p.title}</h3>
+                    <ArrowUpRight size={18} className="shrink-0 text-ash group-hover:text-ink transition-colors" />
                   </div>
-                  <ArrowUpRight size={18} className="text-subtle group-hover:text-neon transition shrink-0 mt-1" />
+                  <p className="text-graphite text-sm fw-440 leading-relaxed flex-1">{p.summary}</p>
+                  <div className="flex gap-2 mt-5">
+                    {p.tags.map((t) => <span key={t} className="pill bg-mist text-xs fw-440 px-3 py-1">{t}</span>)}
+                  </div>
                 </a>
               </Reveal>
             </li>

@@ -2,13 +2,12 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { label: "sobre-mi", href: "#sobre-mi" },
-  { label: "experiencia", href: "#experiencia" },
-  { label: "stack", href: "#skills" },
-  { label: "proyectos", href: "#proyectos" },
-  { label: "github", href: "#github" },
-  { label: "blog", href: "#blog" },
-  { label: "contacto", href: "#contacto" },
+  { label: "Sobre mí", href: "#sobre-mi" },
+  { label: "Experiencia", href: "#experiencia" },
+  { label: "Stack", href: "#skills" },
+  { label: "Proyectos", href: "#proyectos" },
+  { label: "GitHub", href: "#github" },
+  { label: "Blog", href: "#blog" },
 ];
 
 export default function Navbar() {
@@ -16,37 +15,33 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-black/90 backdrop-blur-md py-3 border-b border-neon/20" : "bg-transparent py-5"}`}>
-      <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="text-sm font-bold text-neon">
-          raul@portfolio<span className="text-subtle">:~$</span>
-        </a>
+    <header className={`fixed top-0 inset-x-0 z-50 transition-colors ${scrolled || open ? "bg-white/90 backdrop-blur border-b border-fog" : "bg-transparent"}`}>
+      <div className="max-w-[1280px] mx-auto h-[60px] px-6 flex items-center justify-between">
+        <a href="#" className="text-sm fw-600">Raúl Ramírez</a>
 
-        <nav className="hidden lg:flex items-center gap-6 text-xs">
+        <nav className="hidden lg:flex items-center gap-8 text-sm fw-440">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-muted hover:text-neon transition-colors">
-              ./{l.label}
-            </a>
+            <a key={l.href} href={l.href} className="hover:text-graphite transition-colors">{l.label}</a>
           ))}
         </nav>
 
-        <button onClick={() => setOpen(!open)} className="lg:hidden p-2 text-neon" aria-label="Abrir menú">
+        <a href="#contacto" className="hidden lg:inline-flex btn btn-fill !py-1.5">Contactar</a>
+
+        <button onClick={() => setOpen(!open)} className="lg:hidden p-2" aria-label="Abrir menú">
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {open && (
-        <div className="lg:hidden bg-black/95 border-t border-neon/20 px-6 py-5 flex flex-col gap-3">
-          {links.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="text-sm text-muted hover:text-neon">
-              ./{l.label}
-            </a>
+        <div className="lg:hidden px-6 pb-6 pt-2 flex flex-col gap-4 text-base fw-440">
+          {[...links, { label: "Contacto", href: "#contacto" }].map((l) => (
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
           ))}
         </div>
       )}

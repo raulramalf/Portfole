@@ -1,13 +1,12 @@
 import Reveal from "./Reveal";
 
-export default function SectionTitle({ cmd, title, children }) {
+export default function SectionTitle({ label, title, children }) {
   return (
     <Reveal>
-      <p className="font-mono text-sm text-neon mb-2">
-        <span className="text-subtle">$</span> {cmd}
-      </p>
-      <h2 className="font-bold text-2xl md:text-4xl text-slate-50 mb-3">{title}</h2>
-      {children && <p className="text-muted text-sm mb-10 max-w-2xl">{children}</p>}
+      <p className="text-xs fw-440 uppercase tracking-widest text-ash mb-3">{label}</p>
+      <h2 className="heading-lg mb-4">{title}</h2>
+      {children && <p className="text-graphite text-base fw-440 max-w-2xl mb-12 leading-relaxed">{children}</p>}
+      {!children && <div className="mb-12" />}
     </Reveal>
   );
 }

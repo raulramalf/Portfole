@@ -11,6 +11,9 @@ export const projects = [
     href: "https://browse-me.vercel.app",
     hrefLabel: "Ver la web",
     github: "https://github.com/raulramalf/BrowseMe",
+    // Añade aquí tus capturas y vídeos (ver public/projects/README.md).
+    // Si hay elementos, la tarjeta los muestra en lugar del fragmento de código.
+    media: [],
     file: "domain/score/ScoreCalculator.java",
     lang: "java",
     code: `public static ScoreCard calculate(
