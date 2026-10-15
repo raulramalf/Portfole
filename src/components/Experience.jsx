@@ -57,7 +57,7 @@ const experience = [
 
 export default function Experience() {
   return (
-    <section id="experiencia" className="px-6 md:px-16 py-24 bg-[#07080C] relative">
+    <section id="experiencia" className="px-6 md:px-16 py-24 bg-black relative">
 
 
       <div className="max-w-5xl mx-auto">
@@ -78,7 +78,7 @@ export default function Experience() {
             <Reveal key={job.company} delay={i * 100}>
               <div className="relative pl-8 md:pl-10 group">
                 {/* Nodo de línea de tiempo granate */}
-                <span className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-[#07080C] border-2 border-garnet group-hover:bg-garnet-light group-hover:border-garnet-light transition-colors shadow-md shadow-garnet/40" />
+                <span className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-black border-2 border-garnet group-hover:bg-garnet-light group-hover:border-garnet-light transition-colors shadow-md shadow-garnet/40" />
 
                 {/* Tarjeta de la experiencia */}
                 <div className="p-6 rounded-xl bg-slate-surface/70 border border-white/5 group-hover:border-garnet/30 transition-all duration-300 shadow-xl">

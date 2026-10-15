@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-import AnimatedBackground from './components/AnimatedBackground';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -8,7 +7,8 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Education from './components/Education';
 import Contact from './components/Contact';
-import Chatbot from './components/Chatbot';
+import GithubGraph from './components/GithubGraph';
+import Blog from './components/Blog';
 
 import SupportChatbotDemo from './components/apps/SupportChatbotDemo';
 import EcommerceDemo from './components/apps/EcommerceDemo';
@@ -24,18 +24,19 @@ function Home() {
         <Experience />
         <Skills />
         <Projects />
+        <GithubGraph />
+        <Blog />
         <Education />
         <Contact />
       </main>
-      <Chatbot />
     </>
   );
 }
 
 function App() {
   return (
-    <div className="font-body relative bg-[#07080C] min-h-screen text-slate-100 selection:bg-garnet selection:text-white">
-      <AnimatedBackground />
+    <div className="font-body relative bg-black min-h-screen text-slate-100 selection:bg-neon selection:text-black">
+      <div className="grid-bg fixed inset-0 z-0 pointer-events-none" />
       <div className="relative z-10 h-full min-h-screen flex flex-col">
         <Routes>
           <Route path="/" element={<Home />} />

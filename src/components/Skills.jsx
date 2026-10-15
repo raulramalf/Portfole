@@ -1,70 +1,33 @@
+import {
+  siOpenjdk, siPython, siPhp, siNodedotjs, siSpringboot, siFastapi, siLaravel, siSymfony,
+  siReact, siJavascript, siTailwindcss, siHtml5, siCss, siPostgresql, siMysql, siDocker,
+  siGit, siGithub, siOdoo, siN8n, siMake, siLangchain,
+} from "simple-icons";
 import Reveal from "./Reveal";
+import SectionTitle from "./SectionTitle";
 
-const skills = [
-  {
-    category: "Backend",
-    items: ["Java", "PHP", "Python", "Node.js", "Spring Boot", "FastAPI"],
-  },
-  {
-    category: "Frontend",
-    items: ["JavaScript (ES6+)", "React", "Tailwind CSS", "HTML5/CSS3"],
-  },
-  {
-    category: "Bases de datos",
-    items: ["PostgreSQL", "MySQL", "DynamoDB"],
-  },
-  {
-    category: "Automatización de Flujos",
-    items: ["n8n", "Make"],
-  },
-  {
-    category: "Inteligencia Artificial",
-    items: ["OpenAI API", "LangChain", "Prompt Engineering"],
-  },
-  {
-    category: "Herramientas & Ecosistemas",
-    items: ["Odoo (Python/XML)", "Docker", "Git / GitHub", "Symfony", "Laravel", "JavaFX"],
-  },
-];
+const stack = [
+  siOpenjdk, siPython, siPhp, siNodedotjs, siSpringboot, siFastapi, siLaravel, siSymfony,
+  siReact, siJavascript, siTailwindcss, siHtml5, siCss, siPostgresql, siMysql, siDocker,
+  siGit, siGithub, siOdoo, siN8n, siMake, siLangchain,
+].map((i) => ({ ...i, title: i.title === "OpenJDK" ? "Java" : i.title }));
 
 export default function Skills() {
   return (
-    <section id="skills" className="px-6 md:px-16 py-24 bg-[#0B0D13] relative">
+    <section id="skills" className="px-6 py-24 relative">
+      <div className="max-w-6xl mx-auto">
+        <SectionTitle cmd="cat stack.json" title="Tech stack">
+          Lenguajes, frameworks y herramientas con los que trabajo. También: DynamoDB, OpenAI API y prompt engineering.
+        </SectionTitle>
 
-
-      <div className="max-w-7xl mx-auto">
-        <Reveal>
-          <div className="inline-flex items-center gap-2 font-semibold text-garnet-light text-xs mb-3 px-3.5 py-1.5 rounded-full bg-garnet/10 border border-garnet/20 uppercase tracking-wider">
-            <span>Especialización Técnica</span>
-          </div>
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-slate-50 mb-3">
-            Habilidades & Tecnologías
-          </h2>
-          <p className="text-muted text-sm mb-12 max-w-xl">
-            Herramientas y lenguajes con los que desarrollo habitualmente, organizados por área de especialidad.
-          </p>
-        </Reveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skills.map((group, i) => (
-            <Reveal key={group.category} delay={i * 80}>
-              <div className="group bg-slate-surface/80 rounded-xl p-6 border border-white/5 hover:border-garnet/40 hover:-translate-y-1 transition-all duration-300 h-full flex flex-col justify-between shadow-xl">
-                <div>
-                  <h3 className="font-display font-bold text-base text-slate-100 mb-4 pb-3 border-b border-white/5">
-                    {group.category}
-                  </h3>
-
-                  <div className="flex flex-wrap gap-2">
-                    {group.items.map((item) => (
-                      <span
-                        key={item}
-                        className="text-xs text-slate-300 bg-[#07080C] px-3 py-1.5 rounded-md border border-white/10 group-hover:border-garnet/25 transition-colors"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
+          {stack.map((t, i) => (
+            <Reveal key={t.slug} delay={(i % 8) * 40}>
+              <div className="group aspect-square flex flex-col items-center justify-center gap-2 rounded-lg border border-neon/15 bg-slate-surface/70 hover:border-neon hover:shadow-[0_0_20px_-4px_rgba(57,255,20,0.5)] transition">
+                <svg viewBox="0 0 24 24" role="img" aria-label={t.title} className="w-8 h-8 fill-muted group-hover:fill-[#39FF14] transition">
+                  <path d={t.path} />
+                </svg>
+                <span className="text-[10px] text-muted group-hover:text-neon text-center px-1">{t.title}</span>
               </div>
             </Reveal>
           ))}

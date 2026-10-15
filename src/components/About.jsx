@@ -13,7 +13,7 @@ export default function About() {
     },
     {
       title: "Soluciones a Medida",
-      description: "Sistemas de facturación y gestión como Ledgerly, además de extensiones personalizadas para Odoo ERP.",
+      description: "Sistemas de gestión y análisis web como BrowseMe, además de extensiones personalizadas para Odoo ERP.",
     },
     {
       title: "Sevilla · Presencial / Remoto",
@@ -22,7 +22,7 @@ export default function About() {
   ];
 
   return (
-    <section id="sobre-mi" className="px-6 md:px-16 py-24 bg-[#0B0D13] relative">
+    <section id="sobre-mi" className="px-6 md:px-16 py-24 bg-transparent relative">
       <div className="max-w-7xl mx-auto">
         
         {/* Cabecera de Sección */}
@@ -49,7 +49,7 @@ export default function About() {
 
             <Reveal delay={150}>
               <p className="text-slate-300 text-base md:text-lg leading-relaxed">
-                Cuento con una amplia variedad de proyectos desarrollados y en curso que abarcan desde sistemas de facturación y gestión hasta plataformas interactivas y asistentes virtuales. Trabajo habitualmente con un ecosistema técnico diverso que incluye <strong className="text-slate-200 font-semibold">Java, Python, PHP, Node.js, React, n8n y bases de datos relacionales</strong>.
+                Cuento con una amplia variedad de proyectos desarrollados y en curso que abarcan desde sistemas de gestión y análisis web como BrowseMe hasta plataformas interactivas y asistentes virtuales. Trabajo habitualmente con un ecosistema técnico diverso que incluye <strong className="text-slate-200 font-semibold">Java, Python, PHP, Node.js, React, n8n y bases de datos relacionales</strong>.
               </p>
             </Reveal>
 
