@@ -47,4 +47,23 @@ export const projects = [
       { title: "Entorno", text: "Docker Compose con Nginx, PHP, PostgreSQL, Redis y Node; pruebas de autenticación con Pest." },
     ],
   },
+  {
+    name: "Makeup by Yona",
+    tag: "Proyecto en equipo",
+    private: true,
+    description:
+      "Web profesional de una maquilladora en Ibiza: servicios, solicitud de citas, reseñas, contacto y venta de cursos online con pago mediante Stripe. Desarrollada en equipo junto a mis compañeros.",
+    stack: ["Laravel 13", "Angular 21", "TypeScript", "Tailwind CSS 4", "MySQL", "Stripe", "Nginx"],
+    href: "https://makeupbyyona.es",
+    hrefLabel: "Ver la web",
+    details: [
+      { title: "Arquitectura", text: "Dos aplicaciones independientes que se comunican por HTTP: una API REST en Laravel 13 y una SPA en Angular 21 con componentes standalone." },
+      { title: "Cuentas y acceso", text: "Autenticación con tokens (Sanctum), recuperación de contraseña por correo y límites de peticiones en el acceso y en los formularios públicos." },
+      { title: "Citas y contacto", text: "Solicitud de citas y formulario de contacto que avisan por correo, con límite de envíos para evitar abusos." },
+      { title: "Cursos de pago con Stripe", text: "Compra con Stripe Checkout, también como invitado: la cuenta y el acceso se crean al confirmarse el pago, mediante un webhook firmado e idempotente." },
+      { title: "Ofertas y caducidad", text: "Precios con ventana de fechas y cuenta atrás, y accesos con caducidad que avisan por correo 30 días antes." },
+      { title: "Contenido protegido", text: "Los vídeos de los cursos solo se muestran a quien tiene un acceso vigente; la comprobación se hace en el servidor." },
+      { title: "Pruebas y despliegue", text: "Pruebas automáticas del backend (autenticación, pedidos, webhooks de Stripe, ofertas y caducidad) y despliegue en servidor propio con Nginx y systemd." },
+    ],
+  },
 ];
