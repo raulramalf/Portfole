@@ -10,9 +10,6 @@ import Contact from './components/Contact';
 import GithubGraph from './components/GithubGraph';
 import Blog from './components/Blog';
 
-import SupportChatbotDemo from './components/apps/SupportChatbotDemo';
-import EcommerceDemo from './components/apps/EcommerceDemo';
-import CRMDemo from './components/apps/CRMDemo';
 
 function Home() {
   return (
@@ -40,9 +37,6 @@ function App() {
       <div className="relative z-10 h-full min-h-screen flex flex-col">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/demo/chatbot" element={<SupportChatbotDemo />} />
-          <Route path="/demo/ecommerce" element={<EcommerceDemo />} />
-          <Route path="/demo/crm" element={<CRMDemo />} />
         </Routes>
       </div>
     </div>

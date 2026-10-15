@@ -29,66 +29,6 @@ export const projects = [
     return new ScoreCard((weighted + 50) / 100, areas);
 }`,
   },
-  {
-    name: "AI Support Chatbot",
-    tag: "Demo · Chatbots",
-    description:
-      "Chatbot de soporte al cliente con diseño glassmorphism y lógica de respuestas simuladas en tiempo real.",
-    stack: ["React", "Tailwind CSS"],
-    href: "/demo/chatbot",
-    hrefLabel: "Ver demo",
-    file: "apps/SupportChatbotDemo.jsx",
-    lang: "jsx",
-    code: `const handleSend = (e) => {
-  e.preventDefault();
-  if (!input.trim()) return;
-
-  const userMessage = { id: Date.now(), text: input, sender: "user" };
-  setMessages((prev) => [...prev, userMessage]);
-  setInput("");
-  setIsTyping(true);
-  // ...respuesta simulada con setTimeout
-};`,
-  },
-  {
-    name: "E-commerce Storefront",
-    tag: "Demo · E-commerce",
-    description:
-      "Tienda moderna con animaciones fluidas, visor de catálogo interactivo y carrito de compras integrado.",
-    stack: ["React", "Framer Motion"],
-    href: "/demo/ecommerce",
-    hrefLabel: "Ver demo",
-    file: "apps/EcommerceDemo.jsx",
-    lang: "jsx",
-    code: `const [cart, setCart] = useState([]);
-const [addedId, setAddedId] = useState(null);
-
-const addToCart = (product) => {
-  setCart([...cart, product]);
-  setAddedId(product.id);
-  setTimeout(() => setAddedId(null), 2000);
-};`,
-  },
-  {
-    name: "CRM Dashboard",
-    tag: "Demo · Sistemas de gestión",
-    description:
-      "CRM enfocado en la experiencia de usuario, con embudo de ventas, lista de clientes y métricas de rendimiento.",
-    stack: ["React", "Tailwind CSS"],
-    href: "/demo/crm",
-    hrefLabel: "Ver demo",
-    file: "apps/CRMDemo.jsx",
-    lang: "jsx",
-    code: `export default function CRMDemo() {
-  const [activeTab, setActiveTab] = useState("dashboard");
-
-  return (
-    <div className="min-h-screen flex overflow-hidden">
-      {/* Sidebar + dashboard + embudo de ventas */}
-    </div>
-  );
-}`,
-  },
 ];
 
 export const posts = [

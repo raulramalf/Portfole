@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { ExternalLink } from "lucide-react";
 import Reveal from "./Reveal";
 import SectionTitle from "./SectionTitle";
@@ -6,11 +5,7 @@ import GithubIcon from "./GithubIcon";
 import { projects } from "../data/projects";
 
 function ProjectLink({ href, children, className }) {
-  return href.startsWith("/") ? (
-    <Link to={href} className={className}>{children}</Link>
-  ) : (
-    <a href={href} target="_blank" rel="noreferrer" className={className}>{children}</a>
-  );
+  return <a href={href} target="_blank" rel="noreferrer" className={className}>{children}</a>;
 }
 
 export default function Projects() {
@@ -18,7 +13,7 @@ export default function Projects() {
     <section id="proyectos" className="px-6 py-24 relative">
       <div className="max-w-6xl mx-auto">
         <SectionTitle cmd="ls ./proyectos" title="Proyectos">
-          Cada tarjeta incluye un fragmento real del código del proyecto.
+          Mi proyecto personal, con un fragmento real de su código.
         </SectionTitle>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
