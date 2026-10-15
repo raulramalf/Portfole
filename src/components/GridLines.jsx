@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export default function GridLines() {
   return (
     <div aria-hidden="true" className="fixed inset-0 z-0 pointer-events-none">
-      <div className="max-w-7xl mx-auto h-full px-6 flex justify-between">
+      <div className="max-w-7xl mx-auto h-full px-5 sm:px-6 flex justify-between">
         {Array.from({ length: 7 }).map((_, i) => (
           <motion.span
             key={i}

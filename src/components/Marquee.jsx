@@ -4,8 +4,8 @@ const items = stackGroups.flatMap((g) => g.items);
 
 function Row() {
   return items.map((t, i) => (
-    <span key={t} className="flex items-center gap-8 pr-8 whitespace-nowrap">
-      <span className={`mega text-5xl md:text-7xl uppercase ${i % 2 ? "outline-text" : ""}`}>{t}</span>
+    <span key={t} className="flex items-center gap-6 md:gap-8 pr-6 md:pr-8 whitespace-nowrap">
+      <span className={`mega text-4xl sm:text-5xl md:text-7xl uppercase ${i % 2 ? "outline-text" : ""}`}>{t}</span>
       <span className="w-3 h-3 bg-accent rotate-45 shrink-0" />
     </span>
   ));

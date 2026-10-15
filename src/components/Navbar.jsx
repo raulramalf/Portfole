@@ -27,18 +27,18 @@ export default function Navbar() {
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-0 inset-x-0 z-50 bg-base/80 backdrop-blur-md border-b border-line"
       >
-        <div className="max-w-7xl mx-auto h-16 px-6 flex items-center justify-between">
-          <a href="#" className="font-extrabold tracking-tight text-lg">RR<span className="text-accent">.</span></a>
+        <div className="max-w-7xl mx-auto h-16 px-5 sm:px-6 flex items-center justify-between">
+          <a href="#" className="font-extrabold tracking-tight text-lg py-2 pr-4">RR<span className="text-accent">.</span></a>
 
           <nav className="hidden md:flex items-center gap-8 text-sm text-muted">
             {links.map((l) => (
-              <a key={l.href} href={l.href} className="u-link py-1 hover:text-ink transition-colors">{l.label}</a>
+              <a key={l.href} href={l.href} className="u-link py-2.5 hover:text-ink transition-colors">{l.label}</a>
             ))}
           </nav>
 
           <a href="#contacto" className="hidden md:inline-flex btn btn-primary !py-2.5">Contacto</a>
 
-          <button onClick={() => setOpen(true)} className="md:hidden p-2 -mr-2" aria-label="Abrir menú"><Menu size={24} /></button>
+          <button onClick={() => setOpen(true)} className="md:hidden p-3 -mr-3" aria-label="Abrir menú"><Menu size={24} /></button>
         </div>
       </motion.header>
 
@@ -53,7 +53,7 @@ export default function Navbar() {
           >
             <div className="h-16 px-6 flex items-center justify-between">
               <span className="font-extrabold text-lg">RR<span className="text-accent">.</span></span>
-              <button onClick={() => setOpen(false)} className="p-2 -mr-2" aria-label="Cerrar menú"><X size={24} /></button>
+              <button onClick={() => setOpen(false)} className="p-3 -mr-3" aria-label="Cerrar menú"><X size={24} /></button>
             </div>
             <nav className="flex-1 px-6 flex flex-col justify-center gap-2">
               {[...links, { label: "Contacto", href: "#contacto" }].map((l, i) => (
@@ -64,7 +64,7 @@ export default function Navbar() {
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.25 + i * 0.06 }}
-                  className="mega text-5xl py-1 hover:text-accent transition-colors"
+                  className="mega text-[clamp(2.5rem,12vw,3.5rem)] py-2 hover:text-accent transition-colors"
                 >
                   {l.label}
                 </motion.a>

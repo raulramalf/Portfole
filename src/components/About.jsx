@@ -15,9 +15,9 @@ const areas = [
 export default function About() {
   return (
     <Section id="perfil" n="01" label="Perfil" title="Sobre mí">
-      <ScrollText text={STATEMENT} className="text-2xl md:text-4xl font-semibold tracking-tight leading-[1.25] max-w-5xl" />
+      <ScrollText text={STATEMENT} className="text-[1.4rem] sm:text-3xl md:text-4xl font-semibold tracking-tight leading-[1.25] max-w-5xl" />
 
-      <dl className="mt-20 border-t border-line">
+      <dl className="mt-14 md:mt-20 border-t border-line">
         {areas.map(([k, v], i) => (
           <motion.div
             key={k}

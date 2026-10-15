@@ -80,7 +80,7 @@ export default function Experience() {
               <p className="text-xs text-faint mt-1">{job.location}</p>
             </Reveal>
             <Reveal className="md:pl-12" delay={80}>
-              <h3 className="text-2xl md:text-3xl font-bold tracking-tight">{job.role}</h3>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">{job.role}</h3>
               <p className="text-accent mt-1">{job.company}</p>
               <p className="text-muted mt-4 leading-relaxed max-w-2xl">{job.description}</p>
               <ul className="mt-4 space-y-2 text-sm text-muted leading-relaxed max-w-2xl">

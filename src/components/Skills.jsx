@@ -7,7 +7,7 @@ export default function Skills() {
     <Section id="skills" n="04" label="Stack" title="Habilidades">
       <div className="border-t border-line">
         {stackGroups.map((g, gi) => (
-          <div key={g.name} className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8 border-b border-line">
+          <div key={g.name} className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-6 md:py-8 border-b border-line">
             <h3 className="md:col-span-3 text-xl font-bold tracking-tight">{g.name}</h3>
             <motion.ul
               className="md:col-span-9 flex flex-wrap gap-2.5"
