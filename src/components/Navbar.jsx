@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
@@ -11,31 +12,67 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (y) => {
+    const prev = scrollY.getPrevious() ?? 0;
+    setHidden(y > prev && y > 160 && !open);
+  });
 
   return (
-    <header className="sticky top-0 z-50 bg-base/95 backdrop-blur border-b border-line">
-      <div className="max-w-6xl mx-auto h-16 px-6 flex items-center justify-between">
-        <a href="#" className="font-semibold tracking-tight">RR<span className="text-faint font-normal"> / Desarrollador de software</span></a>
+    <>
+      <motion.header
+        animate={{ y: hidden ? "-110%" : 0 }}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        className="fixed top-0 inset-x-0 z-50 bg-base/80 backdrop-blur-md border-b border-line"
+      >
+        <div className="max-w-7xl mx-auto h-16 px-6 flex items-center justify-between">
+          <a href="#" className="font-extrabold tracking-tight text-lg">RR<span className="text-accent">.</span></a>
 
-        <nav className="hidden md:flex items-center gap-7 text-sm text-muted">
-          {links.map((l) => (
-            <a key={l.href} href={l.href} className="hover:text-accent transition-colors">{l.label}</a>
-          ))}
-          <a href="#contacto" className="btn btn-primary !py-1.5">Contacto</a>
-        </nav>
+          <nav className="hidden md:flex items-center gap-8 text-sm text-muted">
+            {links.map((l) => (
+              <a key={l.href} href={l.href} className="u-link py-1 hover:text-ink transition-colors">{l.label}</a>
+            ))}
+          </nav>
 
-        <button onClick={() => setOpen(!open)} className="md:hidden p-2 -mr-2" aria-label="Abrir menú" aria-expanded={open}>
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
+          <a href="#contacto" className="hidden md:inline-flex btn btn-primary !py-2.5">Contacto</a>
 
-      {open && (
-        <nav className="md:hidden border-t border-line px-6 py-3 flex flex-col text-sm">
-          {[...links, { label: "Contacto", href: "#contacto" }].map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="py-2.5 text-muted hover:text-accent">{l.label}</a>
-          ))}
-        </nav>
-      )}
-    </header>
+          <button onClick={() => setOpen(true)} className="md:hidden p-2 -mr-2" aria-label="Abrir menú"><Menu size={24} /></button>
+        </div>
+      </motion.header>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ clipPath: "circle(0% at 100% 0%)" }}
+            animate={{ clipPath: "circle(150% at 100% 0%)" }}
+            exit={{ clipPath: "circle(0% at 100% 0%)" }}
+            transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
+            className="fixed inset-0 z-[70] bg-base flex flex-col"
+          >
+            <div className="h-16 px-6 flex items-center justify-between">
+              <span className="font-extrabold text-lg">RR<span className="text-accent">.</span></span>
+              <button onClick={() => setOpen(false)} className="p-2 -mr-2" aria-label="Cerrar menú"><X size={24} /></button>
+            </div>
+            <nav className="flex-1 px-6 flex flex-col justify-center gap-2">
+              {[...links, { label: "Contacto", href: "#contacto" }].map((l, i) => (
+                <motion.a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.25 + i * 0.06 }}
+                  className="mega text-5xl py-1 hover:text-accent transition-colors"
+                >
+                  {l.label}
+                </motion.a>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

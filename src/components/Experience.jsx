@@ -1,4 +1,7 @@
+import { useRef } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
 import Section from "./Section";
+import Reveal from "./Reveal";
 
 const experience = [
   {
@@ -56,19 +59,36 @@ const experience = [
 ];
 
 export default function Experience() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.75", "end 0.6"] });
+  const scaleY = useSpring(scrollYProgress, { stiffness: 90, damping: 22 });
+
   return (
-    <Section id="experiencia" title="Experiencia">
-      <ol className="relative border-l border-line ml-1.5 space-y-10">
+    <Section id="experiencia" n="02" label="Trayectoria" title="Experiencia">
+      <ol ref={ref} className="relative ml-2 md:ml-0 space-y-14">
+        <span className="absolute left-0 md:left-[23%] top-2 bottom-2 w-px bg-line" aria-hidden="true" />
+        <motion.span style={{ scaleY }} className="absolute left-0 md:left-[23%] top-2 bottom-2 w-px bg-accent origin-top" aria-hidden="true" />
+
         {experience.map((job) => (
-          <li key={job.company} className="pl-7 relative">
-            <span className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-accent ring-4 ring-base" />
-            <p className="text-xs text-faint">{job.period}</p>
-            <h3 className="text-lg font-semibold tracking-tight mt-1">{job.role}</h3>
-            <p className="text-sm text-accent mt-0.5">{job.company} · {job.location}</p>
-            <p className="text-muted mt-3 leading-relaxed">{job.description}</p>
-            <ul className="mt-3 space-y-1.5 list-disc pl-5 marker:text-faint text-sm text-muted leading-relaxed">
-              {job.bullets.map((b) => <li key={b}>{b}</li>)}
-            </ul>
+          <li key={job.company} className="relative grid grid-cols-1 md:grid-cols-[23%_1fr] gap-4 md:gap-0 pl-8 md:pl-0">
+            <motion.span
+              initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true, amount: 1 }}
+              className="absolute -left-[5px] md:left-[23%] md:-ml-[5px] top-2 w-[11px] h-[11px] rounded-full bg-accent ring-4 ring-base"
+            />
+            <Reveal className="md:pr-10 md:text-right">
+              <p className="mono text-sm text-muted">{job.period}</p>
+              <p className="text-xs text-faint mt-1">{job.location}</p>
+            </Reveal>
+            <Reveal className="md:pl-12" delay={80}>
+              <h3 className="text-2xl md:text-3xl font-bold tracking-tight">{job.role}</h3>
+              <p className="text-accent mt-1">{job.company}</p>
+              <p className="text-muted mt-4 leading-relaxed max-w-2xl">{job.description}</p>
+              <ul className="mt-4 space-y-2 text-sm text-muted leading-relaxed max-w-2xl">
+                {job.bullets.map((b) => (
+                  <li key={b} className="flex gap-3"><span className="mt-2 w-1.5 h-px bg-accent shrink-0 scale-x-[2]" />{b}</li>
+                ))}
+              </ul>
+            </Reveal>
           </li>
         ))}
       </ol>

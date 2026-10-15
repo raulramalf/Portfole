@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Section from "./Section";
 
 const education = [
@@ -26,18 +27,24 @@ const education = [
 
 export default function Education() {
   return (
-    <Section id="educacion" title="Formación">
-      <ol className="relative border-l border-line ml-1.5 space-y-8">
-        {education.map((edu) => (
-          <li key={edu.title} className="pl-7 relative">
-            <span className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-faint ring-4 ring-base" />
-            <p className="text-xs text-faint">{edu.period}</p>
-            <h3 className="text-lg font-semibold tracking-tight mt-1">{edu.title}</h3>
-            <p className="text-sm text-accent mt-0.5">{edu.subtitle} · {edu.institution}</p>
-            <p className="text-sm text-muted mt-3 leading-relaxed">{edu.note}</p>
-          </li>
+    <Section id="educacion" n="05" label="Formación" title="Estudios">
+      <div className="border-t border-line">
+        {education.map((edu, i) => (
+          <motion.div
+            key={edu.title}
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.6, delay: i * 0.08 }}
+            className="group grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-8 py-8 border-b border-line hover:bg-panel/70 transition-colors px-2"
+          >
+            <p className="md:col-span-3 mono text-sm text-muted pt-1">{edu.period}</p>
+            <div className="md:col-span-9">
+              <h3 className="text-2xl font-bold tracking-tight group-hover:text-accent transition-colors">{edu.title}</h3>
+              <p className="text-sm text-accent mt-1">{edu.subtitle} · {edu.institution}</p>
+              <p className="text-muted mt-3 leading-relaxed max-w-2xl">{edu.note}</p>
+            </div>
+          </motion.div>
         ))}
-      </ol>
+      </div>
     </Section>
   );
 }

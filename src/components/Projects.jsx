@@ -1,46 +1,61 @@
-import { ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import Section from "./Section";
+import Reveal from "./Reveal";
 import GithubIcon from "./GithubIcon";
 import MediaGallery from "./MediaGallery";
 import { projects } from "../data/projects";
 
 export default function Projects() {
   return (
-    <Section id="proyectos" title="Proyecto personal">
+    <Section id="proyectos" n="03" label="Proyecto" title="Proyecto personal">
       <div className="space-y-8">
         {projects.map((p) => (
-          <article key={p.name} className="border border-line bg-panel rounded-lg overflow-hidden">
-            <div className="p-6 md:p-8">
-              <p className="text-sm text-faint mb-2">{p.tag}</p>
-              <h3 className="text-2xl font-bold tracking-tight">{p.name}</h3>
-              <p className="text-muted mt-3 leading-relaxed max-w-2xl">{p.description}</p>
+          <Reveal key={p.name}>
+            <motion.article
+              whileHover={{ y: -6 }}
+              transition={{ type: "spring", stiffness: 300, damping: 24 }}
+              className="group rounded-2xl border border-line bg-panel overflow-hidden hover:border-accent/60 transition-colors"
+            >
+              <div className="p-7 md:p-12">
+                <div className="flex items-start justify-between gap-6 mb-8">
+                  <span className="label !text-muted">{p.tag}</span>
+                  <a href={p.href} target="_blank" rel="noreferrer" aria-label={`${p.hrefLabel}: ${p.name}`}
+                     className="w-14 h-14 shrink-0 rounded-full border border-line flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-base transition-colors">
+                    <ArrowUpRight size={22} className="group-hover:rotate-12 transition-transform" />
+                  </a>
+                </div>
 
-              <div className="flex flex-wrap gap-2 mt-5">
-                {p.stack.map((t) => <span key={t} className="tag">{t}</span>)}
+                <h3 className="mega text-6xl md:text-8xl lg:text-9xl">{p.name}</h3>
+                <p className="text-muted text-lg leading-relaxed mt-8 max-w-2xl">{p.description}</p>
+
+                <div className="flex flex-wrap gap-2 mt-8">
+                  {p.stack.map((t) => <span key={t} className="tag">{t}</span>)}
+                </div>
+
+                <div className="flex flex-wrap gap-3 mt-10">
+                  <a href={p.href} target="_blank" rel="noreferrer" className="btn btn-primary">{p.hrefLabel} <ArrowUpRight size={16} /></a>
+                  {p.github && (
+                    <a href={p.github} target="_blank" rel="noreferrer" className="btn btn-outline"><GithubIcon size={16} /> Código en GitHub</a>
+                  )}
+                </div>
               </div>
 
-              <div className="flex flex-wrap gap-3 mt-6">
-                <a href={p.href} target="_blank" rel="noreferrer" className="btn btn-primary">{p.hrefLabel} <ExternalLink size={14} /></a>
-                {p.github && (
-                  <a href={p.github} target="_blank" rel="noreferrer" className="btn btn-outline"><GithubIcon size={14} /> Código en GitHub</a>
+              <div className="border-t border-line bg-base/60 p-4 md:p-8">
+                {p.media?.length ? (
+                  <MediaGallery media={p.media} name={p.name} />
+                ) : (
+                  <div className="rounded-lg border border-line bg-base overflow-hidden min-w-0">
+                    <div className="flex items-center justify-between px-4 py-2.5 border-b border-line text-xs text-faint mono">
+                      <span className="truncate">{p.file}</span>
+                      <span className="uppercase">{p.lang}</span>
+                    </div>
+                    <pre className="p-5 text-xs md:text-sm leading-relaxed overflow-x-auto mono text-ink/90"><code>{p.code}</code></pre>
+                  </div>
                 )}
               </div>
-            </div>
-
-            <div className="border-t border-line bg-base/50 p-4 md:p-6">
-              {p.media?.length ? (
-                <MediaGallery media={p.media} name={p.name} />
-              ) : (
-                <div className="rounded border border-line bg-base overflow-hidden min-w-0">
-                  <div className="flex items-center justify-between px-4 py-2 border-b border-line text-xs text-faint">
-                    <span className="font-mono truncate">{p.file}</span>
-                    <span className="uppercase">{p.lang}</span>
-                  </div>
-                  <pre className="p-4 text-xs leading-relaxed overflow-x-auto font-mono"><code>{p.code}</code></pre>
-                </div>
-              )}
-            </div>
-          </article>
+            </motion.article>
+          </Reveal>
         ))}
       </div>
     </Section>
