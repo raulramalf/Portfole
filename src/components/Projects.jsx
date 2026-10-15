@@ -63,7 +63,7 @@ function ProjectCard({ p }) {
           </div>
 
           {p.logo && (
-            <div className="order-first md:order-last justify-self-start md:justify-self-end w-32 h-32 sm:w-44 sm:h-44 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-3xl bg-raised border border-line p-5 md:p-8 flex items-center justify-center">
+            <div className="order-first md:order-last justify-self-start md:justify-self-end w-32 h-32 sm:w-44 sm:h-44 md:w-64 md:h-64 lg:w-80 lg:h-80 flex items-center justify-center">
               <img src={p.logo} alt={`Logo de ${p.name}`} width={256} height={256} className="w-full h-full object-contain" />
             </div>
           )}
