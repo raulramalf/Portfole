@@ -25,7 +25,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: i * 0.08 }}
             className="group grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-8 py-7 border-b border-line hover:bg-panel/70 transition-colors px-2"
           >
-            <dt className="md:col-span-4 text-xl md:text-2xl font-bold tracking-tight group-hover:text-accent-text group-hover:translate-x-2 transition-all duration-300">{k}</dt>
+            <dt className="md:col-span-4 text-xl md:text-2xl font-bold tracking-tight group-hover:text-accent group-hover:translate-x-2 transition-all duration-300">{k}</dt>
             <dd className="md:col-span-8 text-muted self-center">{v}</dd>
           </motion.div>
         ))}

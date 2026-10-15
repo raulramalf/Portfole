@@ -25,7 +25,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contacto" className="relative px-5 sm:px-6 pt-20 md:pt-40 pb-10 bg-accent text-ink">
+    <section id="contacto" className="relative px-5 sm:px-6 pt-20 md:pt-40 pb-10 bg-accent text-base">
       <div className="max-w-7xl mx-auto">
         <p className="mono text-xs tracking-[0.14em] uppercase mb-6">06 — Contacto</p>
         <h2 className="mega text-[clamp(2.25rem,13vw,11rem)]">
@@ -37,7 +37,7 @@ export default function Contact() {
             Busco oportunidades como desarrollador de software en Sevilla y alrededores, en modalidad presencial, híbrida o remota.
           </p>
           <div className="lg:col-span-7">
-            <a href={`mailto:${EMAIL}`} className="block text-[clamp(1.25rem,6.2vw,3rem)] font-extrabold tracking-tight break-all border-b-4 border-ink/30 hover:border-ink transition-colors pb-2">
+            <a href={`mailto:${EMAIL}`} className="block text-[clamp(1.25rem,6.2vw,3rem)] font-extrabold tracking-tight break-all border-b-4 border-base/30 hover:border-base transition-colors pb-2">
               {EMAIL}
             </a>
             <div className="flex flex-wrap gap-3 mt-6">
@@ -46,7 +46,7 @@ export default function Contact() {
               </button>
               {links.map(([label, href]) => (
                 <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer"
-                   className="btn border border-ink/40 hover:bg-ink hover:text-accent">
+                   className="btn border border-base/40 hover:bg-base hover:text-ink">
                   {label} {href.startsWith("http") && <ArrowUpRight size={14} />}
                 </a>
               ))}
@@ -55,7 +55,7 @@ export default function Contact() {
           </div>
         </Reveal>
 
-        <div className="mt-16 md:mt-24 pt-6 border-t border-ink/25 flex flex-col sm:flex-row justify-between gap-2 text-xs mono">
+        <div className="mt-16 md:mt-24 pt-6 border-t border-base/25 flex flex-col sm:flex-row justify-between gap-2 text-xs mono">
           <p>© {new Date().getFullYear()} Raúl Ramírez Alfaro</p>
           <p>Sevilla, España</p>
         </div>
