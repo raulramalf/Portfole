@@ -25,37 +25,36 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contacto" className="px-6 pt-28 pb-10">
-      <div className="max-w-[1200px] mx-auto">
+    <section id="contacto" className="px-6 md:px-12 pt-24 pb-10">
+      <div className="max-w-4xl">
         <Reveal>
-          <p className="eyebrow mb-6"><span className="text-subtle mr-3">06</span>Contacto</p>
-          <h2 className="display !text-[clamp(2.5rem,8vw,6rem)]">
-            ¿Hablamos de <em className="text-accent">tu equipo</em>?
-          </h2>
-          <p className="text-muted text-lg max-w-xl mt-6 leading-relaxed">
-            Busco oportunidades como desarrollador de software en Sevilla y alrededores (presencial, híbrido o remoto).
-          </p>
+          <div className="rounded-[36px] bg-coral text-white p-8 md:p-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/80 mb-4">06 — Contacto</p>
+            <h2 className="font-display font-bold tracking-tight leading-[0.95] text-5xl md:text-7xl mb-6">¿Trabajamos juntos?</h2>
+            <p className="text-white/90 text-lg max-w-xl leading-relaxed mb-8">
+              Busco oportunidades como desarrollador de software en Sevilla y alrededores (presencial, híbrido o remoto).
+            </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4">
-            <a href={`mailto:${EMAIL}`} className="serif text-3xl md:text-5xl break-all border-b border-accent/40 hover:border-accent transition-colors w-fit">
+            <a href={`mailto:${EMAIL}`} className="block font-display font-semibold text-2xl sm:text-3xl md:text-4xl break-all underline decoration-white/40 underline-offset-8 hover:decoration-white transition mb-6">
               {EMAIL}
             </a>
-            <button onClick={copy} className="btn btn-fill w-fit">
-              {copied ? <><Check size={16} /> ¡Copiado!</> : <><Copy size={16} /> Copiar email</>}
-            </button>
-            <span className="sr-only" role="status">{copied ? "Email copiado al portapapeles" : ""}</span>
-          </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            {links.map(({ label, href, icon: Icon }) => (
-              <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="btn btn-line">
-                <Icon size={14} /> {label}
-              </a>
-            ))}
+            <div className="flex flex-wrap gap-3">
+              <button onClick={copy} className="btn bg-white text-forest hover:bg-cream">
+                {copied ? <><Check size={16} /> ¡Copiado!</> : <><Copy size={16} /> Copiar email</>}
+              </button>
+              {links.map(({ label, href, icon: Icon }) => (
+                <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer"
+                   className="btn border-[1.5px] border-white/60 hover:bg-white hover:text-forest">
+                  <Icon size={14} /> {label}
+                </a>
+              ))}
+              <span className="sr-only" role="status">{copied ? "Email copiado al portapapeles" : ""}</span>
+            </div>
           </div>
         </Reveal>
 
-        <div className="mt-24 pt-6 border-t border-line flex flex-col sm:flex-row justify-between gap-2 text-xs text-subtle">
+        <div className="mt-12 pt-6 border-t border-line flex flex-col sm:flex-row justify-between gap-2 text-xs text-moss">
           <p>© {new Date().getFullYear()} Raúl Ramírez Alfaro</p>
           <p>Sevilla, España</p>
         </div>
