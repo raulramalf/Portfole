@@ -1,5 +1,4 @@
 import Section from "./Section";
-import Reveal from "./Reveal";
 
 const education = [
   {
@@ -27,20 +26,19 @@ const education = [
 
 export default function Education() {
   return (
-    <Section id="educacion" n="05" label="Formación" title="Estudios">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {education.map((edu, i) => (
-          <Reveal key={edu.title} delay={i * 60} className="h-full">
-            <div className="card h-full p-6 flex flex-col">
-              <span className="tag w-fit mb-5 !bg-butter">{edu.period}</span>
-              <h3 className="font-display font-bold text-xl tracking-tight leading-tight">{edu.title}</h3>
-              <p className="text-sm font-medium mt-2">{edu.subtitle}</p>
-              <p className="text-sm text-moss">{edu.institution}</p>
-              <p className="text-sm text-moss leading-relaxed mt-4 pt-4 border-t border-line mt-auto">{edu.note}</p>
+    <Section id="educacion" title="Formación">
+      <ol className="divide-y divide-line border-y border-line">
+        {education.map((edu) => (
+          <li key={edu.title} className="py-7 grid grid-cols-1 sm:grid-cols-4 gap-2 sm:gap-6">
+            <p className="text-sm text-faint sm:pt-1">{edu.period}</p>
+            <div className="sm:col-span-3">
+              <h3 className="text-lg font-semibold tracking-tight">{edu.title}</h3>
+              <p className="text-sm text-navy font-medium mt-0.5">{edu.subtitle} · {edu.institution}</p>
+              <p className="text-sm text-muted mt-3 leading-relaxed">{edu.note}</p>
             </div>
-          </Reveal>
+          </li>
         ))}
-      </div>
+      </ol>
     </Section>
   );
 }

@@ -1,66 +1,47 @@
-import { useEffect, useState } from "react";
-import { ArrowDown } from "lucide-react";
-import Reveal from "./Reveal";
-import { stackCount } from "../data/stack";
+import { useState } from "react";
+import { Mail } from "lucide-react";
 
-const ROLES = ["backend", "automatización con IA", "ERP Odoo", "full-stack"];
+const facts = [
+  ["Ubicación", "Sevilla, España"],
+  ["Modalidad", "Presencial, híbrida o remota"],
+  ["Idiomas", "Español (nativo), inglés (profesional)"],
+];
 
 export default function Hero() {
-  const reduced = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-  const [i, setI] = useState(0);
-  const [n, setN] = useState(reduced ? ROLES[0].length : 0);
-  const [del, setDel] = useState(false);
-
-  useEffect(() => {
-    if (reduced) return;
-    const word = ROLES[i];
-    const t = setTimeout(() => {
-      if (!del && n < word.length) setN(n + 1);
-      else if (!del) setDel(true);
-      else if (n > 0) setN(n - 1);
-      else { setDel(false); setI((i + 1) % ROLES.length); }
-    }, !del && n === word.length ? 1400 : del ? 28 : 65);
-    return () => clearTimeout(t);
-  }, [n, del, i, reduced]);
+  const [photo, setPhoto] = useState("/profile.jpg");
 
   return (
-    <section id="inicio" className="min-h-screen flex items-center px-6 md:px-12 pt-24 pb-16">
-      <div className="max-w-3xl">
-        <Reveal>
-          <p className="kicker mb-6 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-coral animate-pulse" /> Disponible · Sevilla y alrededores
+    <section className="px-6 pt-16 pb-20 md:pt-24 md:pb-24">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+        <div className="md:col-span-8">
+          <p className="text-sm font-medium text-navy mb-4">Desarrollador de software · Automatización de procesos con IA</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">Raúl Ramírez Alfaro</h1>
+          <p className="mt-6 text-lg text-muted leading-relaxed max-w-2xl">
+            Desarrollador con experiencia en entornos backend y frontend, principalmente con Java, PHP, Python y Node.js.
+            Me centro en escribir código mantenible y en aplicar buenas prácticas de arquitectura. Actualmente busco
+            oportunidades como desarrollador de software en Sevilla y alrededores.
           </p>
-          <h1 className="title">
-            Hola, soy Raúl.<br />
-            Construyo software de{" "}
-            <span className="relative inline-block text-coral">
-              {ROLES[i].slice(0, n)}
-              <span className="cursor-blink">|</span>
-            </span>
-          </h1>
-          <p className="mt-8 text-lg md:text-xl text-moss max-w-xl leading-relaxed">
-            Desarrollador de software y automatizador de procesos con IA. Creo soluciones robustas, mantenibles y pensadas para reducir tareas repetitivas.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <a href="#proyectos" className="btn btn-coral">Ver mi proyecto <ArrowDown size={16} /></a>
-            <a href="#contacto" className="btn btn-line">Hablemos</a>
-          </div>
-        </Reveal>
 
-        <Reveal delay={150}>
-          <dl className="mt-16 grid grid-cols-3 gap-4 max-w-xl">
-            {[
-              [String(stackCount), "tecnologías"],
-              ["37", "reglas SEO en BrowseMe"],
-              ["5", "meses con Odoo ERP"],
-            ].map(([k, v]) => (
-              <div key={v}>
-                <dt className="font-display font-bold text-4xl md:text-5xl tracking-tight">{k}</dt>
-                <dd className="text-xs md:text-sm text-moss mt-1">{v}</dd>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href="#contacto" className="btn btn-primary"><Mail size={16} /> Contactar</a>
+            <a href="#proyectos" className="btn btn-outline">Ver proyecto</a>
+          </div>
+
+          <dl className="mt-12 border-t border-line">
+            {facts.map(([k, v]) => (
+              <div key={k} className="flex gap-6 py-3 border-b border-line text-sm">
+                <dt className="w-28 shrink-0 text-faint">{k}</dt>
+                <dd>{v}</dd>
               </div>
             ))}
           </dl>
-        </Reveal>
+        </div>
+
+        <div className="md:col-span-4">
+          <div className="aspect-[4/5] overflow-hidden rounded-md border border-line bg-surface">
+            <img src={photo} onError={() => setPhoto("/avatar.svg")} alt="Raúl Ramírez Alfaro" className="w-full h-full object-cover object-[center_20%] scale-[1.2]" />
+          </div>
+        </div>
       </div>
     </section>
   );

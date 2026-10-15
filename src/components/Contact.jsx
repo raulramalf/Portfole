@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Copy, Check, Phone, ArrowUpRight } from "lucide-react";
-import Reveal from "./Reveal";
-import GithubIcon from "./GithubIcon";
+import { Copy, Check } from "lucide-react";
+import Section from "./Section";
 
 const EMAIL = "raulramalf@gmail.com";
 
@@ -18,47 +17,48 @@ export default function Contact() {
     }
   };
 
-  const links = [
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/raul-ram%C3%ADrezalfaro-539433275", icon: ArrowUpRight },
-    { label: "GitHub", href: "https://github.com/raulramalf", icon: GithubIcon },
-    { label: "+34 665 50 32 51", href: "tel:665503251", icon: Phone },
+  const rows = [
+    ["LinkedIn", "linkedin.com/in/raul-ramírezalfaro", "https://www.linkedin.com/in/raul-ram%C3%ADrezalfaro-539433275"],
+    ["GitHub", "github.com/raulramalf", "https://github.com/raulramalf"],
+    ["Teléfono", "+34 665 50 32 51", "tel:665503251"],
   ];
 
   return (
-    <section id="contacto" className="px-6 md:px-12 pt-24 pb-10">
-      <div className="max-w-4xl">
-        <Reveal>
-          <div className="rounded-[36px] bg-coral text-white p-8 md:p-14">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/80 mb-4">06 — Contacto</p>
-            <h2 className="font-display font-bold tracking-tight leading-[0.95] text-5xl md:text-7xl mb-6">¿Trabajamos juntos?</h2>
-            <p className="text-white/90 text-lg max-w-xl leading-relaxed mb-8">
-              Busco oportunidades como desarrollador de software en Sevilla y alrededores (presencial, híbrido o remoto).
-            </p>
+    <>
+      <Section id="contacto" title="Contacto" alt>
+        <p className="text-lg leading-relaxed max-w-2xl">
+          Estoy en búsqueda activa de oportunidades como desarrollador de software en Sevilla y alrededores
+          (presencial, híbrida o remota).
+        </p>
 
-            <a href={`mailto:${EMAIL}`} className="block font-display font-semibold text-2xl sm:text-3xl md:text-4xl break-all underline decoration-white/40 underline-offset-8 hover:decoration-white transition mb-6">
-              {EMAIL}
-            </a>
-
-            <div className="flex flex-wrap gap-3">
-              <button onClick={copy} className="btn bg-white text-forest hover:bg-cream">
-                {copied ? <><Check size={16} /> ¡Copiado!</> : <><Copy size={16} /> Copiar email</>}
+        <dl className="mt-8 border-t border-line">
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 sm:gap-6 py-4 border-b border-line items-center">
+            <dt className="text-faint text-sm">Email</dt>
+            <dd className="sm:col-span-3 flex flex-wrap items-center gap-3">
+              <a href={`mailto:${EMAIL}`} className="font-medium text-navy hover:underline">{EMAIL}</a>
+              <button onClick={copy} className="btn btn-outline !py-1.5 !px-3 text-xs">
+                {copied ? <><Check size={14} /> Copiado</> : <><Copy size={14} /> Copiar</>}
               </button>
-              {links.map(({ label, href, icon: Icon }) => (
-                <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer"
-                   className="btn border-[1.5px] border-white/60 hover:bg-white hover:text-forest">
-                  <Icon size={14} /> {label}
-                </a>
-              ))}
               <span className="sr-only" role="status">{copied ? "Email copiado al portapapeles" : ""}</span>
-            </div>
+            </dd>
           </div>
-        </Reveal>
+          {rows.map(([k, label, href]) => (
+            <div key={k} className="grid grid-cols-1 sm:grid-cols-4 gap-2 sm:gap-6 py-4 border-b border-line">
+              <dt className="text-faint text-sm">{k}</dt>
+              <dd className="sm:col-span-3">
+                <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="text-navy hover:underline break-all">{label}</a>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
 
-        <div className="mt-12 pt-6 border-t border-line flex flex-col sm:flex-row justify-between gap-2 text-xs text-moss">
+      <footer className="px-6 py-8 border-t border-line">
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between gap-2 text-xs text-faint">
           <p>© {new Date().getFullYear()} Raúl Ramírez Alfaro</p>
           <p>Sevilla, España</p>
         </div>
-      </div>
-    </section>
+      </footer>
+    </>
   );
 }

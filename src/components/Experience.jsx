@@ -1,7 +1,4 @@
-import { useState } from "react";
-import { Plus } from "lucide-react";
 import Section from "./Section";
-import Reveal from "./Reveal";
 
 const experience = [
   {
@@ -59,49 +56,23 @@ const experience = [
 ];
 
 export default function Experience() {
-  const [open, setOpen] = useState(0);
-
   return (
-    <Section id="experiencia" n="03" label="Experiencia" title="Dónde he trabajado">
-      <div className="flex flex-col gap-3">
-        {experience.map((job, i) => {
-          const isOpen = open === i;
-          return (
-            <Reveal key={job.company} delay={i * 50}>
-              <div className={`card transition-colors ${isOpen ? "!bg-sage/60" : ""}`}>
-                <button
-                  onClick={() => setOpen(isOpen ? -1 : i)}
-                  aria-expanded={isOpen}
-                  className="w-full flex items-center gap-4 text-left p-5 md:p-6"
-                >
-                  <span className="text-xs text-moss w-20 shrink-0 hidden sm:block">{job.period}</span>
-                  <span className="flex-1 min-w-0">
-                    <span className="block font-display font-bold text-xl md:text-2xl tracking-tight">{job.role}</span>
-                    <span className="block text-sm text-moss">{job.company} · {job.location}<span className="sm:hidden"> · {job.period}</span></span>
-                  </span>
-                  <span className={`w-9 h-9 shrink-0 rounded-full border border-forest/30 flex items-center justify-center transition-transform ${isOpen ? "rotate-45 bg-coral border-coral text-white" : ""}`}>
-                    <Plus size={18} />
-                  </span>
-                </button>
-
-                {isOpen && (
-                  <div className="px-5 md:px-6 pb-6 sm:pl-[7.5rem]">
-                    <p className="text-sm md:text-base leading-relaxed mb-4">{job.description}</p>
-                    <ul className="space-y-2">
-                      {job.bullets.map((b) => (
-                        <li key={b} className="flex gap-3 text-sm text-moss leading-relaxed">
-                          <span className="w-1.5 h-1.5 rounded-full bg-coral mt-2 shrink-0" />
-                          <span>{b}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </Reveal>
-          );
-        })}
-      </div>
+    <Section id="experiencia" title="Experiencia">
+      <ol className="divide-y divide-line border-y border-line">
+        {experience.map((job) => (
+          <li key={job.company} className="py-8 grid grid-cols-1 sm:grid-cols-4 gap-2 sm:gap-6 first:pt-6">
+            <p className="text-sm text-faint sm:pt-1">{job.period}</p>
+            <div className="sm:col-span-3">
+              <h3 className="text-lg font-semibold tracking-tight">{job.role}</h3>
+              <p className="text-sm text-navy font-medium mt-0.5">{job.company} · {job.location}</p>
+              <p className="text-muted mt-3 leading-relaxed">{job.description}</p>
+              <ul className="mt-3 space-y-1.5 list-disc pl-5 marker:text-faint text-sm text-muted leading-relaxed">
+                {job.bullets.map((b) => <li key={b}>{b}</li>)}
+              </ul>
+            </div>
+          </li>
+        ))}
+      </ol>
     </Section>
   );
 }

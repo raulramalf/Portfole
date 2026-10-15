@@ -16,7 +16,6 @@
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-router-dom": "^7.18.1",
-    "simple-icons": "^16.35.0",
     "tailwindcss": "^4.3.2"
   },
   "devDependencies": {
