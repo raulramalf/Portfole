@@ -41,19 +41,11 @@ export default function Projects() {
                 </div>
               </div>
 
-              <div className="border-t border-line bg-base/60 p-3 sm:p-4 md:p-8">
-                {p.media?.length ? (
+              {p.media?.length > 0 && (
+                <div className="border-t border-line bg-base/60 p-3 sm:p-4 md:p-8">
                   <MediaGallery media={p.media} name={p.name} />
-                ) : (
-                  <div className="rounded-lg border border-line bg-base overflow-hidden min-w-0">
-                    <div className="flex items-center justify-between px-4 py-2.5 border-b border-line text-xs text-faint mono">
-                      <span className="truncate">{p.file}</span>
-                      <span className="uppercase">{p.lang}</span>
-                    </div>
-                    <pre className="p-4 text-[11px] sm:text-xs md:text-sm leading-relaxed overflow-x-auto mono text-ink/90"><code>{p.code}</code></pre>
-                  </div>
-                )}
-              </div>
+                </div>
+              )}
             </motion.article>
           </Reveal>
         ))}

@@ -9,25 +9,11 @@ export const projects = [
     href: "https://browse-me.vercel.app",
     hrefLabel: "Ver la web",
     github: "https://github.com/raulramalf/BrowseMe",
-    // Añade aquí tus capturas y vídeos (ver public/projects/README.md).
-    // Si hay elementos, la tarjeta los muestra en lugar del fragmento de código.
-    media: [],
-    file: "domain/score/ScoreCalculator.java",
-    lang: "java",
-    code: `public static ScoreCard calculate(
-        List<SeoIssue> issues, VisualStatus visual) {
-    Map<RuleArea, Integer> penalties = new EnumMap<>(RuleArea.class);
-    for (SeoIssue issue : issues) {
-        penalties.merge(issue.area(),
-            PENALTY_TENTHS.get(issue.severity()), Integer::sum);
-    }
-    int weighted = 0;
-    for (RuleArea area : RuleArea.values()) {
-        int tenths = Math.max(0, MAX_TENTHS
-            - penalties.getOrDefault(area, 0));
-        weighted += tenths * WEIGHT_PERCENT.get(area);
-    }
-    return new ScoreCard((weighted + 50) / 100, areas);
-}`,
+    media: [
+      { src: "/projects/browseme/01-inicio.webp", alt: "Página de inicio de BrowseMe con un ejemplo de informe" },
+      { src: "/projects/browseme/02-analizar.webp", alt: "Formulario para analizar la dirección de una web" },
+      { src: "/projects/browseme/03-informe-nota.webp", alt: "Informe con la nota de 0 a 10 y el desglose por áreas" },
+      { src: "/projects/browseme/04-plan-captacion.webp", alt: "Plan para conseguir más clientes ordenado por impacto en la nota" },
+    ],
   },
 ];
