@@ -29,16 +29,9 @@ function ProjectCard({ p }) {
     >
       <div className="p-5 sm:p-7 md:p-12">
         <div className="flex items-start justify-between gap-6 mb-6 md:mb-8">
-          <div className="flex items-center gap-4 min-w-0">
-            {p.logo && (
-              <span className="w-16 h-16 sm:w-[72px] sm:h-[72px] shrink-0 rounded-xl bg-raised border border-line p-1.5 flex items-center justify-center">
-                <img src={p.logo} alt={`Logo de ${p.name}`} width={44} height={44} className="w-full h-full object-contain rounded-lg" />
-              </span>
-            )}
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="label !text-muted">{p.tag}</span>
-              {p.private && <span className="tag !py-0.5 !text-xs">Código privado</span>}
-            </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="label !text-muted">{p.tag}</span>
+            {p.private && <span className="tag !py-0.5 !text-xs">Código privado</span>}
           </div>
           <a href={p.href} target="_blank" rel="noreferrer" aria-label={`${p.hrefLabel}: ${p.name}`}
              className="w-12 h-12 shrink-0 rounded-full border border-line flex items-center justify-center hover:bg-accent hover:border-accent hover:text-base transition-colors">
@@ -46,23 +39,33 @@ function ProjectCard({ p }) {
           </a>
         </div>
 
-        <h3 className="mega text-[clamp(2.25rem,10.5vw,6rem)] break-words">{p.name}</h3>
-        <p className="text-muted text-base md:text-lg leading-relaxed mt-5 md:mt-6 max-w-2xl">{p.description}</p>
+        <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto] gap-8 md:gap-12 items-center">
+          <div className="min-w-0">
+            <h3 className="mega text-[clamp(2.25rem,9.5vw,5.5rem)] break-words">{p.name}</h3>
+            <p className="text-muted text-base md:text-lg leading-relaxed mt-5 md:mt-6 max-w-2xl">{p.description}</p>
 
-        <div className="flex flex-wrap gap-2 mt-6">
-          {p.stack.map((t) => <span key={t} className="tag">{t}</span>)}
-        </div>
+            <div className="flex flex-wrap gap-2 mt-6">
+              {p.stack.map((t) => <span key={t} className="tag">{t}</span>)}
+            </div>
 
-        <div className="flex flex-wrap gap-3 mt-8">
-          <a href={p.href} target="_blank" rel="noreferrer" className="btn btn-primary">{p.hrefLabel} <ArrowUpRight size={16} /></a>
-          {p.github && (
-            <a href={p.github} target="_blank" rel="noreferrer" className="btn btn-outline"><GithubIcon size={16} /> Código en GitHub</a>
-          )}
-          {hasMore && (
-            <button type="button" onClick={toggle} aria-expanded={open} aria-controls={panelId} className="btn btn-outline">
-              {open ? "Menos detalles" : "Más detalles"}
-              <ChevronDown size={16} className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
-            </button>
+            <div className="flex flex-wrap gap-3 mt-8">
+              <a href={p.href} target="_blank" rel="noreferrer" className="btn btn-primary">{p.hrefLabel} <ArrowUpRight size={16} /></a>
+              {p.github && (
+                <a href={p.github} target="_blank" rel="noreferrer" className="btn btn-outline"><GithubIcon size={16} /> Código en GitHub</a>
+              )}
+              {hasMore && (
+                <button type="button" onClick={toggle} aria-expanded={open} aria-controls={panelId} className="btn btn-outline">
+                  {open ? "Menos detalles" : "Más detalles"}
+                  <ChevronDown size={16} className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
+                </button>
+              )}
+            </div>
+          </div>
+
+          {p.logo && (
+            <div className="order-first md:order-last justify-self-start md:justify-self-end w-32 h-32 sm:w-44 sm:h-44 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-3xl bg-raised border border-line p-5 md:p-8 flex items-center justify-center">
+              <img src={p.logo} alt={`Logo de ${p.name}`} width={256} height={256} className="w-full h-full object-contain" />
+            </div>
           )}
         </div>
       </div>
