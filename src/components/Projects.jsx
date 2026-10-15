@@ -34,7 +34,7 @@ function ProjectCard({ p }) {
             {p.private && <span className="tag !py-0.5 !text-xs">Código privado</span>}
           </div>
           <a href={p.href} target="_blank" rel="noreferrer" aria-label={`${p.hrefLabel}: ${p.name}`}
-             className="w-12 h-12 shrink-0 rounded-full border border-line flex items-center justify-center hover:bg-accent hover:border-accent hover:text-base transition-colors">
+             className="w-12 h-12 shrink-0 rounded-full border border-line flex items-center justify-center hover:bg-accent hover:border-accent hover:text-ink transition-colors">
             <ArrowUpRight size={20} />
           </a>
         </div>

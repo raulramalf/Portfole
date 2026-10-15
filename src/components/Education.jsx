@@ -38,8 +38,8 @@ export default function Education() {
           >
             <p className="md:col-span-3 mono text-sm text-muted pt-1">{edu.period}</p>
             <div className="md:col-span-9">
-              <h3 className="text-xl sm:text-2xl font-bold tracking-tight group-hover:text-accent transition-colors">{edu.title}</h3>
-              <p className="text-sm text-accent mt-1">{edu.subtitle} · {edu.institution}</p>
+              <h3 className="text-xl sm:text-2xl font-bold tracking-tight group-hover:text-accent-text transition-colors">{edu.title}</h3>
+              <p className="text-sm text-accent-text mt-1">{edu.subtitle} · {edu.institution}</p>
               <p className="text-muted mt-3 leading-relaxed max-w-2xl">{edu.note}</p>
             </div>
           </motion.div>

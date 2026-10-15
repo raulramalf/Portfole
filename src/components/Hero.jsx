@@ -26,7 +26,7 @@ export default function Hero() {
           <h1 className="mega text-[clamp(3rem,15vw,10.5rem)] md:text-[clamp(3.5rem,9.5vw,10.5rem)] lg:text-[clamp(3.5rem,13vw,10.5rem)]">
             <span className="block"><WordReveal text="Raúl" delay={0.15} /></span>
             <span className="block"><WordReveal text="Ramírez" delay={0.3} /></span>
-            <span className="block text-accent"><WordReveal text="Alfaro." delay={0.45} /></span>
+            <span className="block text-accent-text"><WordReveal text="Alfaro." delay={0.45} /></span>
           </h1>
 
           <motion.p
@@ -67,7 +67,7 @@ export default function Hero() {
           >
             <svg viewBox="0 0 100 100" className="w-full h-full spin-slow absolute inset-0">
               <defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" /></defs>
-              <text className="mono" fontSize="7.6" fill="#F2F0EB"><textPath href="#circ" textLength="236" lengthAdjust="spacing">{BADGE}</textPath></text>
+              <text className="mono" fontSize="7.6" fill="#F4ECEA"><textPath href="#circ" textLength="236" lengthAdjust="spacing">{BADGE}</textPath></text>
             </svg>
             <span className="w-3 h-3 rounded-full bg-accent" />
           </motion.div>
