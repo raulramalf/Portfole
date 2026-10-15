@@ -1,5 +1,3 @@
-const BROWSEME_DOCS = "https://github.com/raulramalf/BrowseMe/blob/main/docs";
-
 export const projects = [
   {
     name: "BrowseMe",
@@ -31,26 +29,5 @@ export const projects = [
     }
     return new ScoreCard((weighted + 50) / 100, areas);
 }`,
-  },
-];
-
-export const posts = [
-  {
-    title: "Arquitectura hexagonal en BrowseMe: el dominio no conoce a nadie",
-    summary: "Cómo se separan dominio, aplicación e infraestructura y cómo ArchUnit lo hace cumplir.",
-    tags: ["java", "arquitectura"],
-    href: `${BROWSEME_DOCS}/architecture.md`,
-  },
-  {
-    title: "Seguridad anti-SSRF al descargar URLs de terceros",
-    summary: "Medidas, tests y riesgos que siguen abiertos al analizar páginas que escribe cualquiera.",
-    tags: ["seguridad", "backend"],
-    href: `${BROWSEME_DOCS}/seguridad.md`,
-  },
-  {
-    title: "Decisiones técnicas confirmadas de BrowseMe",
-    summary: "OkHttp + Jsoup, PostgreSQL con Flyway, Ollama local y por qué se eligió cada pieza.",
-    tags: ["decisiones", "ia-local"],
-    href: `${BROWSEME_DOCS}/decisiones.md`,
   },
 ];

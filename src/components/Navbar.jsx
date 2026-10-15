@@ -6,8 +6,6 @@ const links = [
   { label: "Experiencia", href: "#experiencia" },
   { label: "Stack", href: "#skills" },
   { label: "Proyectos", href: "#proyectos" },
-  { label: "GitHub", href: "#github" },
-  { label: "Blog", href: "#blog" },
 ];
 
 export default function Navbar() {

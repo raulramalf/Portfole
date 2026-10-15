@@ -7,8 +7,6 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Education from './components/Education';
 import Contact from './components/Contact';
-import GithubGraph from './components/GithubGraph';
-import Blog from './components/Blog';
 
 
 function Home() {
@@ -21,8 +19,6 @@ function Home() {
         <Experience />
         <Skills />
         <Projects />
-        <GithubGraph />
-        <Blog />
         <Education />
         <Contact />
       </main>
