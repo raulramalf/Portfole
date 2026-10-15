@@ -29,9 +29,16 @@ function ProjectCard({ p }) {
     >
       <div className="p-5 sm:p-7 md:p-12">
         <div className="flex items-start justify-between gap-6 mb-6 md:mb-8">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="label !text-muted">{p.tag}</span>
-            {p.private && <span className="tag !py-0.5 !text-xs">Código privado</span>}
+          <div className="flex items-center gap-4 min-w-0">
+            {p.logo && (
+              <span className="w-16 h-16 sm:w-[72px] sm:h-[72px] shrink-0 rounded-xl bg-raised border border-line p-1.5 flex items-center justify-center">
+                <img src={p.logo} alt={`Logo de ${p.name}`} width={44} height={44} className="w-full h-full object-contain rounded-lg" />
+              </span>
+            )}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="label !text-muted">{p.tag}</span>
+              {p.private && <span className="tag !py-0.5 !text-xs">Código privado</span>}
+            </div>
           </div>
           <a href={p.href} target="_blank" rel="noreferrer" aria-label={`${p.hrefLabel}: ${p.name}`}
              className="w-12 h-12 shrink-0 rounded-full border border-line flex items-center justify-center hover:bg-accent hover:border-accent hover:text-base transition-colors">

@@ -1,6 +1,7 @@
 export const projects = [
   {
     name: "BrowseMe",
+    logo: "/projects/browseme/logo.svg",
     tag: "Proyecto personal · Open source",
     featured: true,
     description:
@@ -18,6 +19,7 @@ export const projects = [
   },
   {
     name: "Selecto Asesores",
+    logo: "/projects/selecto/logo.png",
     tag: "Proyecto profesional · En desarrollo",
     private: true,
     description:
