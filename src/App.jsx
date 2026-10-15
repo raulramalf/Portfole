@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import BackgroundFx from './components/BackgroundFx';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -8,31 +8,21 @@ import Projects from './components/Projects';
 import Education from './components/Education';
 import Contact from './components/Contact';
 
-
-function Home() {
-  return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Skills />
-        <Projects />
-        <Education />
-        <Contact />
-      </main>
-    </>
-  );
-}
-
 function App() {
   return (
-    <div className="font-body relative bg-white min-h-screen text-ink">
-      <div className="relative z-10 h-full min-h-screen flex flex-col">
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
+    <div className="relative min-h-screen bg-base text-ivory">
+      <BackgroundFx />
+      <div className="relative z-10">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Experience />
+          <Skills />
+          <Projects />
+          <Education />
+          <Contact />
+        </main>
       </div>
     </div>
   );

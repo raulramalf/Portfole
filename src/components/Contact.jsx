@@ -25,24 +25,28 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contacto" className="px-6 pt-20 pb-10 bg-mist">
-      <div className="max-w-[1280px] mx-auto text-center">
+    <section id="contacto" className="px-6 pt-28 pb-10">
+      <div className="max-w-[1200px] mx-auto">
         <Reveal>
-          <p className="text-xs fw-440 uppercase tracking-widest text-ash mb-3">Contacto</p>
-          <h2 className="heading-lg mb-4">¿Hablamos?</h2>
-          <p className="text-graphite text-lg fw-440 max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="eyebrow mb-6"><span className="text-subtle mr-3">06</span>Contacto</p>
+          <h2 className="display !text-[clamp(2.5rem,8vw,6rem)]">
+            ¿Hablamos de <em className="text-accent">tu equipo</em>?
+          </h2>
+          <p className="text-muted text-lg max-w-xl mt-6 leading-relaxed">
             Busco oportunidades como desarrollador de software en Sevilla y alrededores (presencial, híbrido o remoto).
           </p>
 
-          <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4 bg-white border border-fog rounded-3xl sm:rounded-full p-3 sm:pl-6">
-            <span className="text-base fw-456 break-all">{EMAIL}</span>
-            <button onClick={copy} className="btn btn-fill">
+          <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4">
+            <a href={`mailto:${EMAIL}`} className="serif text-3xl md:text-5xl break-all border-b border-accent/40 hover:border-accent transition-colors w-fit">
+              {EMAIL}
+            </a>
+            <button onClick={copy} className="btn btn-fill w-fit">
               {copied ? <><Check size={16} /> ¡Copiado!</> : <><Copy size={16} /> Copiar email</>}
             </button>
             <span className="sr-only" role="status">{copied ? "Email copiado al portapapeles" : ""}</span>
           </div>
 
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <div className="mt-8 flex flex-wrap gap-3">
             {links.map(({ label, href, icon: Icon }) => (
               <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="btn btn-line">
                 <Icon size={14} /> {label}
@@ -51,7 +55,7 @@ export default function Contact() {
           </div>
         </Reveal>
 
-        <div className="mt-20 pt-6 border-t border-silver/50 flex flex-col sm:flex-row justify-between gap-2 text-xs text-graphite fw-440">
+        <div className="mt-24 pt-6 border-t border-line flex flex-col sm:flex-row justify-between gap-2 text-xs text-subtle">
           <p>© {new Date().getFullYear()} Raúl Ramírez Alfaro</p>
           <p>Sevilla, España</p>
         </div>

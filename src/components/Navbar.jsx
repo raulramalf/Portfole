@@ -2,47 +2,59 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { label: "Sobre mí", href: "#sobre-mi" },
-  { label: "Experiencia", href: "#experiencia" },
-  { label: "Stack", href: "#skills" },
-  { label: "Proyectos", href: "#proyectos" },
+  { label: "Perfil", id: "sobre-mi" },
+  { label: "Experiencia", id: "experiencia" },
+  { label: "Stack", id: "skills" },
+  { label: "Proyecto", id: "proyectos" },
+  { label: "Formación", id: "educacion" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const obs = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    [...links.map((l) => l.id), "contacto"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+    return () => obs.disconnect();
   }, []);
 
+  const cls = (id) =>
+    `px-3.5 py-1.5 rounded-full text-sm transition-colors ${active === id ? "bg-accent-soft text-accent" : "text-muted hover:text-ivory"}`;
+
   return (
-    <header className={`fixed top-0 inset-x-0 z-50 transition-colors ${scrolled || open ? "bg-white/90 backdrop-blur border-b border-fog" : "bg-transparent"}`}>
-      <div className="max-w-[1280px] mx-auto h-[60px] px-6 flex items-center justify-between">
-        <a href="#" className="text-sm fw-600">Raúl Ramírez</a>
+    <header className="fixed top-4 inset-x-0 z-50 flex justify-center px-4">
+      <div className="w-full max-w-fit rounded-3xl lg:rounded-full border border-line bg-panel/70 backdrop-blur-xl">
+        <div className="flex items-center justify-between gap-2 p-1.5 pl-5">
+          <a href="#" className="serif text-xl mr-4 lg:mr-6">Raúl<span className="text-accent">.</span></a>
 
-        <nav className="hidden lg:flex items-center gap-8 text-sm fw-440">
-          {links.map((l) => (
-            <a key={l.href} href={l.href} className="hover:text-graphite transition-colors">{l.label}</a>
-          ))}
-        </nav>
+          <nav className="hidden lg:flex items-center">
+            {links.map((l) => (
+              <a key={l.id} href={`#${l.id}`} className={cls(l.id)}>{l.label}</a>
+            ))}
+          </nav>
 
-        <a href="#contacto" className="hidden lg:inline-flex btn btn-fill !py-1.5">Contactar</a>
+          <a href="#contacto" className="hidden lg:inline-flex btn btn-fill !py-1.5 ml-2">Contacto</a>
 
-        <button onClick={() => setOpen(!open)} className="lg:hidden p-2" aria-label="Abrir menú">
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
-
-      {open && (
-        <div className="lg:hidden px-6 pb-6 pt-2 flex flex-col gap-4 text-base fw-440">
-          {[...links, { label: "Contacto", href: "#contacto" }].map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
-          ))}
+          <button onClick={() => setOpen(!open)} className="lg:hidden p-2 mr-1 text-ivory" aria-label="Abrir menú" aria-expanded={open}>
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
-      )}
+
+        {open && (
+          <nav className="lg:hidden flex flex-col gap-1 px-3 pb-4 pt-1 min-w-[220px]">
+            {[...links, { label: "Contacto", id: "contacto" }].map((l) => (
+              <a key={l.id} href={`#${l.id}`} onClick={() => setOpen(false)} className={cls(l.id)}>{l.label}</a>
+            ))}
+          </nav>
+        )}
+      </div>
     </header>
   );
 }

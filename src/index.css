@@ -1,60 +1,76 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #141414;
-  --color-canvas: #ffffff;
-  --color-graphite: #707070;
-  --color-ash: #adadad;
-  --color-fog: #ededed;
-  --color-mist: #f2f2f2;
-  --color-silver: #c2c2c2;
+  --color-base: #0A0B10;
+  --color-panel: #11131A;
+  --color-raised: #181B25;
+  --color-line: rgba(237, 233, 224, 0.09);
+  --color-line-strong: rgba(237, 233, 224, 0.2);
 
-  /* Inter variable como sustituto de «saans» (admite pesos fraccionarios) */
+  --color-ivory: #EDE9E0;
+  --color-muted: #A3A4AE;
+  --color-subtle: #6D6F7B;
+
+  /* Único acento: dorado champán */
+  --color-accent: #C9A96E;
+  --color-accent-soft: rgba(201, 169, 110, 0.12);
+
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-
-  --shadow-float: rgba(0, 0, 0, 0.04) 0px 8px 40px 0px;
-  --shadow-ring: rgba(64, 64, 64, 0.16) 0px 0px 0px 1px inset;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
 
 html, body {
-  background: #fff;
-  color: var(--color-ink);
+  background: var(--color-base);
+  color: var(--color-ivory);
   font-family: var(--font-sans);
-  font-feature-settings: "calt" 0, "dlig", "ss07";
-  letter-spacing: 0.013em;
   max-width: 100vw;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-::selection { background: #141414; color: #fff; }
+::selection { background: var(--color-accent); color: #0A0B10; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 
-/* Pesos fraccionarios de la guía de estilo */
-.fw-400 { font-weight: 400; }
-.fw-440 { font-weight: 440; }
-.fw-456 { font-weight: 456; }
-.fw-600 { font-weight: 600; }
-.fw-652 { font-weight: 652; }
+.serif { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.01em; }
+.display { font-family: var(--font-serif); font-weight: 400; font-size: clamp(3rem, 10vw, 7.5rem); line-height: 0.95; letter-spacing: -0.02em; }
+.heading { font-family: var(--font-serif); font-weight: 400; font-size: clamp(2.25rem, 5vw, 4rem); line-height: 1.02; letter-spacing: -0.015em; }
 
-.display { font-weight: 652; font-size: clamp(2.75rem, 9vw, 5rem); line-height: 1; letter-spacing: -0.011em; }
-.heading-lg { font-weight: 652; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.12; letter-spacing: -0.007em; }
+.eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--color-accent); }
 
-/* Pastillas: todo elemento interactivo es 9999px */
-.pill { border-radius: 9999px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 9999px; padding: 10px 20px; font-size: 14px; font-weight: 600; transition: background .2s, color .2s, box-shadow .2s; }
-.btn-fill { background: #141414; color: #fff; }
-.btn-fill:hover { box-shadow: var(--shadow-ring); background: #2a2a2a; }
-.btn-line { border: 1px solid #141414; color: #141414; }
-.btn-line:hover { background: #141414; color: #fff; }
+/* Tarjetas de cristal sobre el fondo animado */
+.tile {
+  background: linear-gradient(180deg, rgba(24, 27, 37, 0.72), rgba(17, 19, 26, 0.72));
+  border: 1px solid var(--color-line);
+  border-radius: 24px;
+  backdrop-filter: blur(10px);
+  transition: border-color .3s, transform .3s;
+}
+.tile:hover { border-color: rgba(201, 169, 110, 0.4); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 9999px; padding: 11px 22px; font-size: 14px; font-weight: 500; transition: background .25s, color .25s, border-color .25s, box-shadow .25s; }
+.btn-fill { background: var(--color-accent); color: #0A0B10; }
+.btn-fill:hover { background: #dcbf86; box-shadow: 0 0 30px -4px rgba(201, 169, 110, 0.55); }
+.btn-line { border: 1px solid var(--color-line-strong); color: var(--color-ivory); }
+.btn-line:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+.chip { border: 1px solid var(--color-line); border-radius: 9999px; padding: 4px 12px; font-size: 12px; color: var(--color-muted); }
 
 .cursor-blink { animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 
-:focus-visible { outline: 2px solid #141414; outline-offset: 2px; }
+/* Marquesina de tecnologías */
+.marquee { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee-track { display: flex; gap: 12px; width: max-content; animation: marquee 50s linear infinite; }
+.marquee-track.reverse { animation-direction: reverse; animation-duration: 60s; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(calc(-50% - 6px)); } }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  .marquee { mask-image: none; }
+  .marquee-track { flex-wrap: wrap; width: auto; }
+  .marquee-dup { display: none; }
 }

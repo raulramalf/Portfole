@@ -1,37 +1,39 @@
-import {
-  siOpenjdk, siPython, siPhp, siNodedotjs, siSpringboot, siFastapi, siLaravel, siSymfony,
-  siReact, siJavascript, siTailwindcss, siHtml5, siCss, siPostgresql, siMysql, siDocker,
-  siGit, siGithub, siOdoo, siN8n, siMake, siLangchain,
-} from "simple-icons";
-import Reveal from "./Reveal";
+import { stack } from "../data/stack";
 import SectionTitle from "./SectionTitle";
 
-const stack = [
-  siOpenjdk, siPython, siPhp, siNodedotjs, siSpringboot, siFastapi, siLaravel, siSymfony,
-  siReact, siJavascript, siTailwindcss, siHtml5, siCss, siPostgresql, siMysql, siDocker,
-  siGit, siGithub, siOdoo, siN8n, siMake, siLangchain,
-].map((i) => ({ ...i, title: i.title === "OpenJDK" ? "Java" : i.title }));
+const half = Math.ceil(stack.length / 2);
+const rows = [stack.slice(0, half), stack.slice(half)];
+
+function Item({ t }) {
+  return (
+    <div className="group flex items-center gap-3 rounded-full border border-line bg-panel/70 backdrop-blur px-5 py-3 hover:border-accent/50 transition-colors">
+      <svg viewBox="0 0 24 24" role="img" aria-label={t.title} className="w-5 h-5 fill-muted group-hover:fill-accent transition-colors">
+        <path d={t.path} />
+      </svg>
+      <span className="text-sm text-muted group-hover:text-ivory transition-colors whitespace-nowrap">{t.title}</span>
+    </div>
+  );
+}
 
 export default function Skills() {
   return (
-    <section id="skills" className="px-6 py-20">
-      <div className="max-w-[1280px] mx-auto">
-        <SectionTitle label="Tech stack" title="Herramientas con las que trabajo">
+    <section id="skills" className="py-28">
+      <div className="max-w-[1200px] mx-auto px-6 mb-12">
+        <SectionTitle index="03" label="Tech stack" title="Herramientas">
           También: DynamoDB, OpenAI API y prompt engineering.
         </SectionTitle>
+      </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
-          {stack.map((t, i) => (
-            <Reveal key={t.slug} delay={(i % 8) * 30}>
-              <div className="aspect-square flex flex-col items-center justify-center gap-3 rounded-2xl border border-fog bg-white hover:border-ink transition-colors">
-                <svg viewBox="0 0 24 24" role="img" aria-label={t.title} className="w-8 h-8 fill-ink">
-                  <path d={t.path} />
-                </svg>
-                <span className="text-xs fw-440 text-graphite text-center px-1">{t.title}</span>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+      <div className="space-y-3">
+        {rows.map((row, r) => (
+          <div key={r} className="marquee">
+            <div className={`marquee-track ${r ? "reverse" : ""}`}>
+              {row.map((t) => <Item key={t.slug} t={t} />)}
+              {/* copia para el bucle continuo */}
+              {row.map((t) => <div key={`d-${t.slug}`} className="marquee-dup" aria-hidden="true"><Item t={t} /></div>)}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

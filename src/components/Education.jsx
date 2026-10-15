@@ -27,19 +27,20 @@ const education = [
 
 export default function Education() {
   return (
-    <section id="educacion" className="px-6 py-20">
-      <div className="max-w-[1280px] mx-auto">
-        <SectionTitle label="Formación" title="Estudios y titulaciones" />
+    <section id="educacion" className="px-6 py-28">
+      <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <SectionTitle index="05" label="Formación" title="Estudios" className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start" />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="lg:col-span-8 border-t border-line">
           {education.map((edu, i) => (
-            <Reveal key={edu.title} delay={i * 80} className="h-full">
-              <div className="h-full border border-fog rounded-2xl p-6 bg-white flex flex-col">
-                <span className="pill bg-mist text-xs fw-440 px-3 py-1 w-fit mb-4">{edu.period}</span>
-                <h3 className="text-lg fw-652 tracking-tight leading-snug">{edu.title}</h3>
-                <p className="text-sm fw-456 mt-1">{edu.subtitle}</p>
-                <p className="text-sm text-graphite fw-440 mt-1 mb-4">{edu.institution}</p>
-                <p className="text-sm text-graphite fw-440 leading-relaxed border-t border-fog pt-4 mt-auto">{edu.note}</p>
+            <Reveal key={edu.title} delay={i * 60}>
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 py-7 border-b border-line">
+                <p className="md:col-span-3 text-sm text-accent">{edu.period}</p>
+                <div className="md:col-span-9">
+                  <h3 className="serif text-2xl">{edu.title}</h3>
+                  <p className="text-sm text-ivory/90 mt-1">{edu.subtitle} · <span className="text-muted">{edu.institution}</span></p>
+                  <p className="text-sm text-muted leading-relaxed mt-3 max-w-xl">{edu.note}</p>
+                </div>
               </div>
             </Reveal>
           ))}

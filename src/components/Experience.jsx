@@ -58,39 +58,36 @@ const experience = [
 
 export default function Experience() {
   return (
-    <section id="experiencia" className="px-6 py-20">
-      <div className="max-w-[1280px] mx-auto">
-        <SectionTitle label="Trayectoria" title="Experiencia profesional">
-          Desarrollo backend, personalización ERP, desarrollo web full-stack y soporte técnico.
+    <section id="experiencia" className="px-6 py-28">
+      <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <SectionTitle index="02" label="Trayectoria" title="Experiencia" className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start">
+          Backend, personalización ERP, desarrollo web full-stack y soporte técnico.
         </SectionTitle>
 
-        <div className="grid gap-4">
+        <ol className="lg:col-span-8 relative border-l border-line ml-2 space-y-4">
           {experience.map((job, i) => (
-            <Reveal key={job.company} delay={i * 60}>
-              <div className="border border-fog rounded-3xl p-6 md:p-8 bg-white grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
-                <div className="md:col-span-4">
-                  <h3 className="text-xl fw-652 tracking-tight">{job.role}</h3>
-                  <p className="text-graphite fw-440 mt-1">{job.company}</p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <span className="pill bg-mist text-xs fw-440 px-3 py-1">{job.period}</span>
-                    <span className="pill bg-mist text-xs fw-440 px-3 py-1">{job.location}</span>
+            <li key={job.company} className="pl-8 relative">
+              <span className="absolute -left-[5px] top-8 h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_14px_rgba(201,169,110,0.7)]" />
+              <Reveal delay={i * 60}>
+                <div className="tile p-6 md:p-7">
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-3">
+                    <h3 className="serif text-2xl">{job.role} <span className="text-muted">· {job.company}</span></h3>
+                    <span className="text-xs text-subtle">{job.period} · {job.location}</span>
                   </div>
-                </div>
-                <div className="md:col-span-8">
-                  <p className="text-base fw-456 leading-relaxed mb-4">{job.description}</p>
+                  <p className="text-ivory/90 text-sm leading-relaxed mb-4">{job.description}</p>
                   <ul className="space-y-2">
                     {job.bullets.map((b) => (
-                      <li key={b} className="flex gap-3 text-sm text-graphite fw-440 leading-relaxed">
-                        <span className="w-1.5 h-1.5 rounded-full bg-ink mt-2 shrink-0" />
+                      <li key={b} className="flex gap-3 text-sm text-muted leading-relaxed">
+                        <span className="w-1 h-1 rounded-full bg-accent mt-2.5 shrink-0" />
                         <span>{b}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-              </div>
-            </Reveal>
+              </Reveal>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );
