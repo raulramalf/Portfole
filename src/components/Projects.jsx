@@ -8,7 +8,7 @@ import { projects } from "../data/projects";
 
 export default function Projects() {
   return (
-    <Section id="proyectos" n="03" label="Proyecto" title="Proyecto personal">
+    <Section id="proyectos" n="03" label="Proyectos" title="Proyectos">
       <div className="space-y-8">
         {projects.map((p) => (
           <Reveal key={p.name}>
@@ -19,7 +19,10 @@ export default function Projects() {
             >
               <div className="p-5 sm:p-7 md:p-12">
                 <div className="flex items-start justify-between gap-6 mb-8">
-                  <span className="label !text-muted">{p.tag}</span>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="label !text-muted">{p.tag}</span>
+                    {p.private && <span className="tag !py-0.5 !text-xs">Código privado</span>}
+                  </div>
                   <a href={p.href} target="_blank" rel="noreferrer" aria-label={`${p.hrefLabel}: ${p.name}`}
                      className="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded-full border border-line flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-base transition-colors">
                     <ArrowUpRight size={22} className="group-hover:rotate-12 transition-transform" />
@@ -44,6 +47,24 @@ export default function Projects() {
               {p.media?.length > 0 && (
                 <div className="border-t border-line bg-base/60 p-3 sm:p-4 md:p-8">
                   <MediaGallery media={p.media} name={p.name} />
+                </div>
+              )}
+              {(p.details?.length > 0 || p.notes) && (
+                <div className="border-t border-line p-5 sm:p-7 md:p-12">
+                  {p.details?.length > 0 && (
+                    <>
+                      <h4 className="label mb-6">Cómo está construido</h4>
+                      <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-7">
+                        {p.details.map((d) => (
+                          <div key={d.title}>
+                            <dt className="font-semibold tracking-tight">{d.title}</dt>
+                            <dd className="text-sm text-muted leading-relaxed mt-1.5">{d.text}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </>
+                  )}
+                  {p.notes && <p className="text-xs text-faint mt-8">{p.notes}</p>}
                 </div>
               )}
             </motion.article>

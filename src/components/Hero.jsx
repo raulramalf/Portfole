@@ -41,7 +41,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.05, duration: 0.7 }}
             className="mt-8 md:mt-10 flex flex-wrap gap-3"
           >
-            <a href="#proyectos" className="btn btn-primary group">Ver proyecto <ArrowDown size={16} className="group-hover:translate-y-0.5 transition-transform" /></a>
+            <a href="#proyectos" className="btn btn-primary group">Ver proyectos <ArrowDown size={16} className="group-hover:translate-y-0.5 transition-transform" /></a>
             <a href="#contacto" className="btn btn-outline group">Contactar <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" /></a>
           </motion.div>
         </motion.div>
