@@ -27,15 +27,14 @@ const education = [
 export default function Education() {
   return (
     <Section id="educacion" title="Formación">
-      <ol className="divide-y divide-line border-y border-line">
+      <ol className="relative border-l border-line ml-1.5 space-y-8">
         {education.map((edu) => (
-          <li key={edu.title} className="py-7 grid grid-cols-1 sm:grid-cols-4 gap-2 sm:gap-6">
-            <p className="text-sm text-faint sm:pt-1">{edu.period}</p>
-            <div className="sm:col-span-3">
-              <h3 className="text-lg font-semibold tracking-tight">{edu.title}</h3>
-              <p className="text-sm text-navy font-medium mt-0.5">{edu.subtitle} · {edu.institution}</p>
-              <p className="text-sm text-muted mt-3 leading-relaxed">{edu.note}</p>
-            </div>
+          <li key={edu.title} className="pl-7 relative">
+            <span className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-faint ring-4 ring-base" />
+            <p className="text-xs text-faint">{edu.period}</p>
+            <h3 className="text-lg font-semibold tracking-tight mt-1">{edu.title}</h3>
+            <p className="text-sm text-accent mt-0.5">{edu.subtitle} · {edu.institution}</p>
+            <p className="text-sm text-muted mt-3 leading-relaxed">{edu.note}</p>
           </li>
         ))}
       </ol>

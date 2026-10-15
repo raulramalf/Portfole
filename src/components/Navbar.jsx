@@ -7,21 +7,21 @@ const links = [
   { label: "Proyecto", href: "#proyectos" },
   { label: "Habilidades", href: "#skills" },
   { label: "Formación", href: "#educacion" },
-  { label: "Contacto", href: "#contacto" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-line">
-      <div className="max-w-5xl mx-auto h-16 px-6 flex items-center justify-between">
-        <a href="#" className="font-semibold tracking-tight">Raúl Ramírez Alfaro</a>
+    <header className="sticky top-0 z-50 bg-base/95 backdrop-blur border-b border-line">
+      <div className="max-w-6xl mx-auto h-16 px-6 flex items-center justify-between">
+        <a href="#" className="font-semibold tracking-tight">RR<span className="text-faint font-normal"> / Desarrollador de software</span></a>
 
         <nav className="hidden md:flex items-center gap-7 text-sm text-muted">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="hover:text-navy transition-colors">{l.label}</a>
+            <a key={l.href} href={l.href} className="hover:text-accent transition-colors">{l.label}</a>
           ))}
+          <a href="#contacto" className="btn btn-primary !py-1.5">Contacto</a>
         </nav>
 
         <button onClick={() => setOpen(!open)} className="md:hidden p-2 -mr-2" aria-label="Abrir menú" aria-expanded={open}>
@@ -31,8 +31,8 @@ export default function Navbar() {
 
       {open && (
         <nav className="md:hidden border-t border-line px-6 py-3 flex flex-col text-sm">
-          {links.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="py-2.5 text-muted hover:text-navy">{l.label}</a>
+          {[...links, { label: "Contacto", href: "#contacto" }].map((l) => (
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="py-2.5 text-muted hover:text-accent">{l.label}</a>
           ))}
         </nav>
       )}

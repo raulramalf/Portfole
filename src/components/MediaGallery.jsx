@@ -12,10 +12,10 @@ function Thumb({ m, active, onClick, i }) {
       onClick={onClick}
       aria-label={`Ver ${isVideo(m) ? "vídeo" : "imagen"} ${i + 1}`}
       aria-pressed={active}
-      className={`relative shrink-0 w-20 h-14 rounded overflow-hidden border bg-surface transition ${active ? "border-navy" : "border-line opacity-70 hover:opacity-100"}`}
+      className={`relative shrink-0 w-20 h-14 rounded overflow-hidden border bg-raised transition ${active ? "border-accent" : "border-line opacity-70 hover:opacity-100"}`}
     >
       {isVideo(m) ? (
-        m.poster ? <img src={m.poster} alt="" className="w-full h-full object-cover" /> : <span className="w-full h-full bg-ink" />
+        m.poster ? <img src={m.poster} alt="" className="w-full h-full object-cover" /> : <span className="w-full h-full bg-black" />
       ) : (
         <img src={m.src} alt="" loading="lazy" className="w-full h-full object-cover" />
       )}
@@ -34,7 +34,7 @@ export default function MediaGallery({ media, name }) {
 
   return (
     <div className="flex flex-col gap-3 min-w-0">
-      <div className="rounded-md overflow-hidden border border-line bg-surface aspect-[16/10] flex items-center justify-center">
+      <div className="rounded-md overflow-hidden border border-line bg-raised aspect-[16/10] flex items-center justify-center">
         {broken[idx] ? (
           <p className="text-sm text-muted px-6 text-center">No se pudo cargar este archivo: {current.src}</p>
         ) : isVideo(current) ? (

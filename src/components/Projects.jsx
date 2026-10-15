@@ -9,7 +9,7 @@ export default function Projects() {
     <Section id="proyectos" title="Proyecto personal">
       <div className="space-y-8">
         {projects.map((p) => (
-          <article key={p.name} className="border border-line rounded-md overflow-hidden">
+          <article key={p.name} className="border border-line bg-panel rounded-lg overflow-hidden">
             <div className="p-6 md:p-8">
               <p className="text-sm text-faint mb-2">{p.tag}</p>
               <h3 className="text-2xl font-bold tracking-tight">{p.name}</h3>
@@ -27,11 +27,11 @@ export default function Projects() {
               </div>
             </div>
 
-            <div className="border-t border-line bg-surface p-4 md:p-6">
+            <div className="border-t border-line bg-base/50 p-4 md:p-6">
               {p.media?.length ? (
                 <MediaGallery media={p.media} name={p.name} />
               ) : (
-                <div className="rounded border border-line bg-white overflow-hidden min-w-0">
+                <div className="rounded border border-line bg-base overflow-hidden min-w-0">
                   <div className="flex items-center justify-between px-4 py-2 border-b border-line text-xs text-faint">
                     <span className="font-mono truncate">{p.file}</span>
                     <span className="uppercase">{p.lang}</span>

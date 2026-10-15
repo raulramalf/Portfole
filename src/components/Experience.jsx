@@ -58,18 +58,17 @@ const experience = [
 export default function Experience() {
   return (
     <Section id="experiencia" title="Experiencia">
-      <ol className="divide-y divide-line border-y border-line">
+      <ol className="relative border-l border-line ml-1.5 space-y-10">
         {experience.map((job) => (
-          <li key={job.company} className="py-8 grid grid-cols-1 sm:grid-cols-4 gap-2 sm:gap-6 first:pt-6">
-            <p className="text-sm text-faint sm:pt-1">{job.period}</p>
-            <div className="sm:col-span-3">
-              <h3 className="text-lg font-semibold tracking-tight">{job.role}</h3>
-              <p className="text-sm text-navy font-medium mt-0.5">{job.company} · {job.location}</p>
-              <p className="text-muted mt-3 leading-relaxed">{job.description}</p>
-              <ul className="mt-3 space-y-1.5 list-disc pl-5 marker:text-faint text-sm text-muted leading-relaxed">
-                {job.bullets.map((b) => <li key={b}>{b}</li>)}
-              </ul>
-            </div>
+          <li key={job.company} className="pl-7 relative">
+            <span className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-accent ring-4 ring-base" />
+            <p className="text-xs text-faint">{job.period}</p>
+            <h3 className="text-lg font-semibold tracking-tight mt-1">{job.role}</h3>
+            <p className="text-sm text-accent mt-0.5">{job.company} · {job.location}</p>
+            <p className="text-muted mt-3 leading-relaxed">{job.description}</p>
+            <ul className="mt-3 space-y-1.5 list-disc pl-5 marker:text-faint text-sm text-muted leading-relaxed">
+              {job.bullets.map((b) => <li key={b}>{b}</li>)}
+            </ul>
           </li>
         ))}
       </ol>
