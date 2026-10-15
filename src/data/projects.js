@@ -49,6 +49,7 @@ export const projects = [
   },
   {
     name: "Makeup by Yona",
+    logo: "/projects/makeup/logo.svg",
     tag: "Proyecto en equipo",
     private: true,
     description:
@@ -56,6 +57,13 @@ export const projects = [
     stack: ["Laravel 13", "Angular 21", "TypeScript", "Tailwind CSS 4", "MySQL", "Stripe", "Nginx"],
     href: "https://makeupbyyona.es",
     hrefLabel: "Ver la web",
+    media: [
+      { src: "/projects/makeup/01-servicios.webp", alt: "Página de servicios de Makeup by Yona" },
+      { src: "/projects/makeup/02-especialidades.webp", alt: "Especialidades: novias, invitadas, editorial y cine" },
+      { src: "/projects/makeup/03-catalogo-servicios.webp", alt: "Catálogo de servicios con lo que incluye cada uno" },
+      { src: "/projects/makeup/04-galeria.webp", alt: "Galería de trabajos" },
+      { src: "/projects/makeup/05-sobre-mi.webp", alt: "Página Sobre mí" },
+    ],
     details: [
       { title: "Arquitectura", text: "Dos aplicaciones independientes que se comunican por HTTP: una API REST en Laravel 13 y una SPA en Angular 21 con componentes standalone." },
       { title: "Cuentas y acceso", text: "Autenticación con tokens (Sanctum), recuperación de contraseña por correo y límites de peticiones en el acceso y en los formularios públicos." },
