@@ -28,7 +28,7 @@ export default function Navbar() {
         className="fixed top-0 inset-x-0 z-50 bg-base/80 backdrop-blur-md border-b border-line"
       >
         <div className="max-w-7xl mx-auto h-16 px-5 sm:px-6 flex items-center justify-between">
-          <a href="#" className="font-extrabold tracking-tight text-lg py-2 pr-4">RR<span className="text-accent">.</span></a>
+          <a href="#" aria-label="Raúl Ramírez Alfaro, inicio" className="py-1.5 pr-4"><img src="/logo.svg" alt="" width={36} height={36} className="w-9 h-9" /></a>
 
           <nav className="hidden md:flex items-center gap-8 text-sm text-muted">
             {links.map((l) => (
@@ -52,7 +52,7 @@ export default function Navbar() {
             className="fixed inset-0 z-[70] bg-base flex flex-col"
           >
             <div className="h-16 px-6 flex items-center justify-between">
-              <span className="font-extrabold text-lg">RR<span className="text-accent">.</span></span>
+              <img src="/logo.svg" alt="Raúl Ramírez Alfaro" width={36} height={36} className="w-9 h-9" />
               <button onClick={() => setOpen(false)} className="p-3 -mr-3" aria-label="Cerrar menú"><X size={24} /></button>
             </div>
             <nav className="flex-1 px-6 flex flex-col justify-center gap-2">

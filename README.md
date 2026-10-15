@@ -1,16 +1,38 @@
-# React + Vite
+# Portfolio · Raúl Ramírez Alfaro
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Portfolio personal de desarrollador de software: presentación, experiencia,
+habilidades, proyectos con capturas y contacto.
 
-Currently, two official plugins are available:
+## Tecnologías
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+React 19, Vite, Tailwind CSS 4, Framer Motion y Lucide.
 
-## React Compiler
+## Autoría y uso de IA
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Autor:** Raúl Ramírez Alfaro ([@raulramalf](https://github.com/raulramalf)),
+creador y responsable de este repositorio.
 
-## Expanding the Oxlint configuration
+**Uso de IA:** durante el desarrollo se han utilizado herramientas de IA
+únicamente como **herramienta de apoyo** (por ejemplo, sugerencias de código,
+revisión, documentación o borradores). No han sido el único recurso: las
+decisiones sobre el contenido, el diseño y lo que se publica, así como la
+revisión y la responsabilidad del resultado, son del autor.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Desarrollo
+
+```bash
+npm install
+npm run dev      # servidor de desarrollo
+npm run build    # compilación de producción en dist/
+npm run lint
+```
+
+## Dónde se edita cada cosa
+
+- `src/data/projects.js`: proyectos (descripción, tecnologías, enlaces, logo,
+  capturas y bloque «Cómo está construido»).
+- `src/data/stack.js`: tecnologías por categoría.
+- `public/projects/<proyecto>/`: capturas, vídeos y logos. Ver
+  [public/projects/README.md](public/projects/README.md).
+- `src/components/`: secciones de la página.
+- `public/logo.svg`: logotipo (también se usa como favicon).
