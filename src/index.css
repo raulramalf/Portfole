@@ -61,8 +61,12 @@ html, body {
 @keyframes marquee { to { transform: translateX(-50%); } }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* Pausa manual de la marquesina (botón visible con «reducir movimiento») */
+.marquee[data-paused="true"] .marquee-track { animation-play-state: paused !important; }
+
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-  .marquee-track { flex-wrap: wrap; width: auto; }
-  .marquee-dup { display: none; }
+  /* La franja de tecnologías sigue en movimiento, pero más lenta; se puede pausar con el botón */
+  .marquee-track { animation: marquee 120s linear infinite !important; }
+  .marquee:hover .marquee-track { animation-play-state: paused !important; }
 }
