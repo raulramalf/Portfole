@@ -33,10 +33,12 @@ function ProjectCard({ p }) {
             <span className="label !text-muted">{p.tag}</span>
             {p.private && <span className="tag !py-0.5 !text-xs">Código privado</span>}
           </div>
-          <a href={p.href} target="_blank" rel="noreferrer" aria-label={`${p.hrefLabel}: ${p.name}`}
-             className="w-12 h-12 shrink-0 rounded-full border border-line flex items-center justify-center hover:bg-accent hover:border-accent hover:text-base transition-colors">
-            <ArrowUpRight size={20} />
-          </a>
+          {p.href && (
+            <a href={p.href} target="_blank" rel="noreferrer" aria-label={`${p.hrefLabel}: ${p.name}`}
+               className="w-12 h-12 shrink-0 rounded-full border border-line flex items-center justify-center hover:bg-accent hover:border-accent hover:text-base transition-colors">
+              <ArrowUpRight size={20} />
+            </a>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto] gap-8 md:gap-12 items-center">
@@ -49,7 +51,9 @@ function ProjectCard({ p }) {
             </div>
 
             <div className="flex flex-wrap gap-3 mt-8">
-              <a href={p.href} target="_blank" rel="noreferrer" className="btn btn-primary">{p.hrefLabel} <ArrowUpRight size={16} /></a>
+              {p.href && (
+                <a href={p.href} target="_blank" rel="noreferrer" className="btn btn-primary">{p.hrefLabel} <ArrowUpRight size={16} /></a>
+              )}
               {p.github && (
                 <a href={p.github} target="_blank" rel="noreferrer" className="btn btn-outline"><GithubIcon size={16} /> Código en GitHub</a>
               )}
